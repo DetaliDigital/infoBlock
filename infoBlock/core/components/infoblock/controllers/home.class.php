@@ -67,6 +67,7 @@ class infoBlockHomeManagerController extends modExtraManagerController
         Ext.onReady(function() {MODx.load({ xtype: "infoblock-page-home"});});
         </script>');
     }
+    
 
 
     /**

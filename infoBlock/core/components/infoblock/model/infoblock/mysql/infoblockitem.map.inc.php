@@ -4,19 +4,21 @@ $xpdo_meta_map['infoBlockItem']= array (
   'version' => '1.1',
   'table' => 'infoblock_items',
   'extends' => 'xPDOSimpleObject',
-  'tableMeta' => 
+  'tableMeta' =>
   array (
     'engine' => 'InnoDB',
   ),
-  'fields' => 
+  'fields' =>
   array (
     'name' => '',
+    'image' => NULL,
     'description' => '',
+    'content' => '',
     'active' => 1,
   ),
-  'fieldMeta' => 
+  'fieldMeta' =>
   array (
-    'name' => 
+    'name' =>
     array (
       'dbtype' => 'varchar',
       'precision' => '100',
@@ -24,14 +26,36 @@ $xpdo_meta_map['infoBlockItem']= array (
       'null' => false,
       'default' => '',
     ),
-    'description' => 
+    'image' =>
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+    ),
+    'description' =>
     array (
       'dbtype' => 'text',
       'phptype' => 'string',
       'null' => true,
       'default' => '',
     ),
-    'active' => 
+    'content' =>
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => true,
+      'default' => '',
+    ),
+    'url' =>
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => true,
+      'default' => '',
+    ),
+    'active' =>
     array (
       'dbtype' => 'tinyint',
       'precision' => '1',
@@ -40,17 +64,17 @@ $xpdo_meta_map['infoBlockItem']= array (
       'default' => 1,
     ),
   ),
-  'indexes' => 
+  'indexes' =>
   array (
-    'name' => 
+    'name' =>
     array (
       'alias' => 'name',
       'primary' => false,
       'unique' => false,
       'type' => 'BTREE',
-      'columns' => 
+      'columns' =>
       array (
-        'name' => 
+        'name' =>
         array (
           'length' => '',
           'collation' => 'A',
@@ -58,15 +82,15 @@ $xpdo_meta_map['infoBlockItem']= array (
         ),
       ),
     ),
-    'active' => 
+    'active' =>
     array (
       'alias' => 'active',
       'primary' => false,
       'unique' => false,
       'type' => 'BTREE',
-      'columns' => 
+      'columns' =>
       array (
-        'active' => 
+        'active' =>
         array (
           'length' => '',
           'collation' => 'A',

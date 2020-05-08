@@ -46,3 +46,40 @@ Ext.extend(infoBlock.combo.Search, Ext.form.TwinTriggerField, {
 });
 Ext.reg('infoblock-combo-search', infoBlock.combo.Search);
 Ext.reg('infoblock-field-search', infoBlock.combo.Search);
+
+MODx.combo.resources = function(config) {
+	config = config || {};
+	Ext.applyIf(config,{
+		name: 'url',
+		hiddenName: 'url',
+		displayField: 'pagetitle',
+		valueField: 'url',
+		editable: true,
+		fields: ['id','pagetitle','url','parents'],
+		pageSize: 10,
+		emptyText: '',
+		url: infoBlock.config.connectorUrl,
+		baseParams: {
+			action: 'mgr/resource/getlist'
+		},
+		forceSelection: false,
+		tpl: new Ext.XTemplate(''
+			+'<tpl for="."><div class="x-combo-list-item infoblock-resource-list-item">'
+				+'<tpl if="parents">'
+					+'<span class="parents">'
+						+'<tpl for="parents">'
+							+'<small>{pagetitle} / </small></br>'
+						+'</tpl>'
+					+'</span>'
+				+'</tpl>'
+			+'<span><tpl if="id"><sup><small>({id})</small></sup> </tpl><b>{pagetitle}</b></span>'
+			+'</div></tpl>',
+    {
+		compiled: true
+		}),
+		itemSelector: 'div.infoblock-resource-list-item'
+	});
+	MODx.combo.resources.superclass.constructor.call(this,config);
+};
+Ext.extend(MODx.combo.resources,MODx.combo.ComboBox);
+Ext.reg('infoblock-filter-resources',MODx.combo.resources);
