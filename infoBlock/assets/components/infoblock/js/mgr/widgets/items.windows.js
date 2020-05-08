@@ -125,15 +125,19 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
             name: 'description',
             id: config.id + '-description',
             anchor: '99%',
-            height: 150,
+            height: 50,
         }, {
             xtype: 'textarea',
             fieldLabel: _('infoblock_item_content'),
             name: 'content',
             id: config.id + '-content',
             height: 200,
-            anchor: '99%'
-
+            anchor: '99%',
+            listeners: {
+                render: function () {
+                    MODx.loadRTE(config.id + '-content');
+                }
+            }
         } , {
 						xtype: 'infoblock-filter-resources',
 	          fieldLabel: _('infoblock_item_url'),

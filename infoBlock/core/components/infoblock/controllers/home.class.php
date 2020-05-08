@@ -60,6 +60,12 @@ class infoBlockHomeManagerController extends modExtraManagerController
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/widgets/items.windows.js');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/widgets/home.panel.js');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/sections/home.js');
+        $this->addJavascript('/assets/components/tinymcerte/js/vendor/tinymce/tinymce.min.js');
+        $this->addJavascript('/assets/components/tinymcerte/js/vendor/autocomplete.js');
+        $this->addJavascript('/assets/components/tinymcerte/js/mgr/tinymcerte.js');
+
+
+// Конфиги добавил
 
         $this->addHtml('<script type="text/javascript">
         infoBlock.config = ' . json_encode($this->infoBlock->config) . ';
@@ -67,7 +73,7 @@ class infoBlockHomeManagerController extends modExtraManagerController
         Ext.onReady(function() {MODx.load({ xtype: "infoblock-page-home"});});
         </script>');
     }
-    
+
 
 
     /**
