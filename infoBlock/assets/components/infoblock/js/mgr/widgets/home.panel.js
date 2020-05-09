@@ -29,6 +29,16 @@ infoBlock.panel.Home = function (config) {
                     xtype: 'infoblock-grid-items',
                     cls: 'main-wrapper',
                 }]
+            }, {
+                title: _('infoblock_positions'),
+                layout: 'anchor',
+                items: [{
+                    html: _('infoblock_intro_msg'),
+                    cls: 'panel-desc',
+                }, {
+                    xtype: 'infoblock-grid-positions',
+                    cls: 'main-wrapper',
+                }]
             }]
         }]
     });

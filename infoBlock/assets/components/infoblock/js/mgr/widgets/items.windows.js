@@ -16,9 +16,11 @@ infoBlock.window.CreateItem = function (config) {
             }, scope: this
         }]
     });
+
     infoBlock.window.CreateItem.superclass.constructor.call(this, config);
 
 };
+
 Ext.extend(infoBlock.window.CreateItem, MODx.Window, {
 
     getFields: function (config) {
@@ -43,22 +45,28 @@ Ext.extend(infoBlock.window.CreateItem, MODx.Window, {
             name: 'description',
             id: config.id + '-description',
             height: 100,
-            anchor: '99%'
+            anchor: '99%',
         }, {
             xtype: 'textarea',
             fieldLabel: _('infoblock_item_content'),
             name: 'content',
             id: config.id + '-content',
             height: 200,
-            anchor: '99%'
+            anchor: '99%',
         }, {
 						xtype: 'infoblock-filter-resources',
 	          fieldLabel: _('infoblock_item_url'),
 						name: 'url',
             id: config.id + '-url',
 						anchor: '99%',
-						allowBlank: true
+						allowBlank: true,
+
 				}, {
+            xtype: 'infoblock-combo-position',
+            fieldLabel: _('infoblock_item_position'),
+            anchor: '99%',
+            allowBlank: true,
+        }, {
             xtype: 'xcheckbox',
             boxLabel: _('infoblock_item_active'),
             name: 'active',
@@ -133,19 +141,19 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
             id: config.id + '-content',
             height: 200,
             anchor: '99%',
-            listeners: {
-                render: function () {
-                    MODx.loadRTE(config.id + '-content');
-                }
-            }
         } , {
 						xtype: 'infoblock-filter-resources',
 	          fieldLabel: _('infoblock_item_url'),
 						name: 'url',
             id: config.id + '-url',
 						anchor: '99%',
-						allowBlank: true
+						allowBlank: true,
 				}, {
+            xtype: 'infoblock-combo-position',
+            fieldLabel: _('infoblock_item_position'),
+            anchor: '99%',
+            allowBlank: true,
+        }, {
             xtype: 'xcheckbox',
             boxLabel: _('infoblock_item_active'),
             name: 'active',

@@ -81,5 +81,52 @@ MODx.combo.resources = function(config) {
 	});
 	MODx.combo.resources.superclass.constructor.call(this,config);
 };
+
+
+
+
+infoBlock.combo.Position = function (config) {
+    config = config || {};
+
+    Ext.applyIf(config, {
+        name: 'position_id',
+        fieldLabel: _('positions_' + config.name || 'positions'),
+        hiddenName: 'position_id',
+        displayField: 'name',
+        valueField: 'id',
+        anchor: '99%',
+        fields: ['name', 'id', 'alias'],
+        pageSize: 20,
+        url: infoBlock.config['connector_url'],
+        typeAhead: true,
+        editable: true,
+        allowBlank: true,
+        emptyText: _('no'),
+        minChars: 1,
+        baseParams: {
+            action: 'mgr/position/getlist',
+            combo: true,
+            id: config.value,
+        },
+        tpl: new Ext.XTemplate(''
+    			+'<tpl for="."><div class="x-combo-list-item infoblock-position-list-item">'
+    			   +'<tpl if="alias"><small>{alias} /</small></br></tpl>'
+    			   +'<span><tpl if="id"><sup><small>({id})</small></sup> </tpl><b>{name}</b></span>'
+    			+'</div></tpl>',
+          {
+      		compiled: true
+      		}),
+      		itemSelector: 'div.infoblock-position-list-item'
+    });
+    infoBlock.combo.Position.superclass.constructor.call(this, config);
+    this.on('expand', function () {
+        if (!!this.pageTb) {
+            this.pageTb.show();
+        }
+    });
+};
+
 Ext.extend(MODx.combo.resources,MODx.combo.ComboBox);
+Ext.extend(infoBlock.combo.Position,MODx.combo.ComboBox);
 Ext.reg('infoblock-filter-resources',MODx.combo.resources);
+Ext.reg('infoblock-combo-position',infoBlock.combo.Position);

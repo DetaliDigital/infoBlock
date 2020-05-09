@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package infoblock
+ * @package modextra
  */
 class infoBlockItem extends xPDOSimpleObject
 {
