@@ -82,8 +82,8 @@ MODx.combo.resources = function(config) {
 	MODx.combo.resources.superclass.constructor.call(this,config);
 };
 
-
-
+Ext.extend(MODx.combo.resources,MODx.combo.ComboBox);
+Ext.reg('infoblock-filter-resources',MODx.combo.resources);
 
 infoBlock.combo.Position = function (config) {
     config = config || {};
@@ -126,7 +126,22 @@ infoBlock.combo.Position = function (config) {
     });
 };
 
-Ext.extend(MODx.combo.resources,MODx.combo.ComboBox);
 Ext.extend(infoBlock.combo.Position,MODx.combo.ComboBox);
-Ext.reg('infoblock-filter-resources',MODx.combo.resources);
 Ext.reg('infoblock-combo-position',infoBlock.combo.Position);
+
+infoBlock.combo.DateTime = function (config) {
+    config = config || {};
+    Ext.applyIf(config, {
+        timePosition: 'right',
+        allowBlank: true,
+        hiddenFormat: 'Y-m-d H:i:s',
+        dateFormat: MODx.config['manager_date_format'],
+        timeFormat: MODx.config['manager_time_format'],
+        dateWidth: 150,
+        timeWidth: 100,
+    });
+    infoBlock.combo.DateTime.superclass.constructor.call(this, config);
+};
+
+Ext.extend(infoBlock.combo.DateTime, Ext.ux.form.DateTime);
+Ext.reg('infoblock-combo-dates',infoBlock.combo.DateTime);

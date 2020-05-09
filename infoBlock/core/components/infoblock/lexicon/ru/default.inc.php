@@ -11,15 +11,18 @@ $_lang['infoblock_positions'] = 'Позиции';
 $_lang['infoblock_item_id'] = 'Id';
 $_lang['infoblock_item_name'] = 'Название';
 $_lang['infoblock_item_image'] = 'Изображение';
-$_lang['infoblock_item_description'] = 'Описание';
+$_lang['infoblock_item_description'] = 'Аннотация';
 $_lang['infoblock_item_content'] = 'Содержание';
-$_lang['infoblock_item_url'] = 'Ссылка на ресурс';
+$_lang['infoblock_item_url'] = 'Ссылка';
 $_lang['infoblock_item_active'] = 'Активно';
 
 $_lang['infoblock_position_id'] = 'Id';
 $_lang['infoblock_position_name'] = 'Название';
 $_lang['infoblock_position_alias'] = 'Псевдоним';
 $_lang['infoblock_item_position'] = 'Позиция';
+$_lang['infoblock_item_createdon'] = 'Опубликован';
+$_lang['infoblock_item_tabs_content'] = 'Содержание';
+$_lang['infoblock_item_tabs_gallery'] = 'Галерея';
 
 $_lang['infoblock_item_create'] = 'Создать блок';
 $_lang['infoblock_item_update'] = 'Изменить элемент';

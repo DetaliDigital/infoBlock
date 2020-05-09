@@ -24,56 +24,78 @@ infoBlock.window.CreateItem = function (config) {
 Ext.extend(infoBlock.window.CreateItem, MODx.Window, {
 
     getFields: function (config) {
-        return [{
-            xtype: 'textfield',
-            fieldLabel: _('infoblock_item_name'),
-            name: 'name',
-            id: config.id + '-name',
-            anchor: '99%',
-            allowBlank: false,
-        }, {
-            xtype: 'modx-combo-browser',
-            fieldLabel: _('infoblock_item_image'),
-            name: 'image',
-            id: config.id + '-image',
-            source: MODx.config.modextra_source_images || MODx.config.default_media_source,
-            anchor: '99%',
-            allowBlank: true,
-        }, {
-            xtype: 'textarea',
-            fieldLabel: _('infoblock_item_description'),
-            name: 'description',
-            id: config.id + '-description',
-            height: 100,
-            anchor: '99%',
-        }, {
-            xtype: 'textarea',
-            fieldLabel: _('infoblock_item_content'),
-            name: 'content',
-            id: config.id + '-content',
-            height: 200,
-            anchor: '99%',
-        }, {
-						xtype: 'infoblock-filter-resources',
-	          fieldLabel: _('infoblock_item_url'),
-						name: 'url',
-            id: config.id + '-url',
-						anchor: '99%',
-						allowBlank: true,
-
-				}, {
-            xtype: 'infoblock-combo-position',
-            fieldLabel: _('infoblock_item_position'),
-            anchor: '99%',
-            allowBlank: true,
-        }, {
-            xtype: 'xcheckbox',
-            boxLabel: _('infoblock_item_active'),
-            name: 'active',
-            id: config.id + '-active',
-            checked: true,
-        }];
-    },
+      return [{
+          xtype: 'hidden',
+          name: 'id',
+          id: config.id + '-id',
+      }, {
+          layout: 'column',
+          items: [{
+              columnWidth: .7,
+              layout: 'form',
+              defaults: {msgTarget: 'under'},
+              items: [{
+                  xtype: 'textfield',
+                  fieldLabel: _('infoblock_item_name'),
+                  name: 'name',
+                  id: config.id + '-name',
+                  anchor: '99%',
+                  allowBlank: false,
+              }, {
+                  xtype: 'modx-combo-browser',
+                  fieldLabel: _('infoblock_item_image'),
+                  name: 'image',
+                  id: config.id + '-image',
+                  source: MODx.config.modextra_source_images || MODx.config.default_media_source,
+                  anchor: '99%',
+                  allowBlank: true,
+              }, {
+                  xtype: 'textarea',
+                  fieldLabel: _('infoblock_item_description'),
+                  name: 'description',
+                  id: config.id + '-description',
+                  anchor: '99%',
+                  height: 50,
+              }, {
+                  xtype: 'textarea',
+                  fieldLabel: _('infoblock_item_content'),
+                  name: 'content',
+                  id: config.id + '-content',
+                  height: 200,
+                  anchor: '99%',
+              }, {
+                  xtype: 'infoblock-filter-resources',
+                  fieldLabel: _('infoblock_item_url'),
+                  name: 'url',
+                  id: config.id + '-url',
+                  anchor: '99%',
+                  allowBlank: true,
+              } ],
+          }, {
+              columnWidth: .3,
+              layout: 'form',
+              items: [{
+                  xtype: 'infoblock-combo-position',
+                  fieldLabel: _('infoblock_item_position'),
+                  anchor: '99%',
+                  allowBlank: true,
+              }, {
+                  xtype: 'infoblock-combo-dates',
+                  fieldLabel: _('infoblock_item_createdon'),
+                  name: 'createdon',
+                  id: config.id + '-createdon',
+                  anchor: '99%',
+                  allowBlank: true,
+              }, {
+                  xtype: 'xcheckbox',
+                  boxLabel: _('infoblock_item_active'),
+                  name: 'active',
+                  id: config.id + '-active',
+              }],
+          }]
+      },
+      ];
+  },
 
     loadDropZones: function () {
     }
@@ -113,56 +135,78 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
             name: 'id',
             id: config.id + '-id',
         }, {
-            xtype: 'textfield',
-            fieldLabel: _('infoblock_item_name'),
-            name: 'name',
-            id: config.id + '-name',
-            anchor: '99%',
-            allowBlank: false,
-        }, {
-            xtype: 'modx-combo-browser',
-            fieldLabel: _('infoblock_item_image'),
-            name: 'image',
-            id: config.id + '-image',
-            source: MODx.config.modextra_source_images || MODx.config.default_media_source,
-            anchor: '99%',
-            allowBlank: true,
-        }, {
-            xtype: 'textarea',
-            fieldLabel: _('infoblock_item_description'),
-            name: 'description',
-            id: config.id + '-description',
-            anchor: '99%',
-            height: 50,
-        }, {
-            xtype: 'textarea',
-            fieldLabel: _('infoblock_item_content'),
-            name: 'content',
-            id: config.id + '-content',
-            height: 200,
-            anchor: '99%',
-        } , {
-						xtype: 'infoblock-filter-resources',
-	          fieldLabel: _('infoblock_item_url'),
-						name: 'url',
-            id: config.id + '-url',
-						anchor: '99%',
-						allowBlank: true,
-				}, {
-            xtype: 'infoblock-combo-position',
-            fieldLabel: _('infoblock_item_position'),
-            anchor: '99%',
-            allowBlank: true,
-        }, {
-            xtype: 'xcheckbox',
-            boxLabel: _('infoblock_item_active'),
-            name: 'active',
-            id: config.id + '-active',
-        }];
+            layout: 'column',
+            items: [{
+                columnWidth: .7,
+                layout: 'form',
+                defaults: {msgTarget: 'under'},
+                items: [{
+                    xtype: 'textfield',
+                    fieldLabel: _('infoblock_item_name'),
+                    name: 'name',
+                    id: config.id + '-name',
+                    anchor: '99%',
+                    allowBlank: false,
+                }, {
+                    xtype: 'modx-combo-browser',
+                    fieldLabel: _('infoblock_item_image'),
+                    name: 'image',
+                    id: config.id + '-image',
+                    source: MODx.config.modextra_source_images || MODx.config.default_media_source,
+                    anchor: '99%',
+                    allowBlank: true,
+                }, {
+                    xtype: 'textarea',
+                    fieldLabel: _('infoblock_item_description'),
+                    name: 'description',
+                    id: config.id + '-description',
+                    anchor: '99%',
+                    height: 50,
+                }, {
+                    xtype: 'textarea',
+                    fieldLabel: _('infoblock_item_content'),
+                    name: 'content',
+                    id: config.id + '-content',
+                    height: 200,
+                    anchor: '99%',
+                } , {
+        						xtype: 'infoblock-filter-resources',
+        	          fieldLabel: _('infoblock_item_url'),
+        						name: 'url',
+                    id: config.id + '-url',
+        						anchor: '99%',
+        						allowBlank: true,
+        				}],
+            }, {
+                columnWidth: .3,
+                layout: 'form',
+                items: [{
+                    xtype: 'infoblock-combo-position',
+                    fieldLabel: _('infoblock_item_position'),
+                    anchor: '99%',
+                    allowBlank: true,
+                }, {
+                    xtype: 'infoblock-combo-dates',
+                    fieldLabel: _('infoblock_item_createdon'),
+                    name: 'createdon',
+                    id: config.id + '-createdon',
+                    anchor: '99%',
+                    allowBlank: true,
+                }, {
+                    xtype: 'xcheckbox',
+                    boxLabel: _('infoblock_item_active'),
+                    name: 'active',
+                    id: config.id + '-active',
+                }],
+            }]
+        },
+        ];
     },
 
     loadDropZones: function () {
     }
 
 });
+
+
 Ext.reg('infoblock-item-window-update', infoBlock.window.UpdateItem);
