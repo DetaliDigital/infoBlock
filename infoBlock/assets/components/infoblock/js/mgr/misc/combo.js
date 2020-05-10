@@ -145,3 +145,26 @@ infoBlock.combo.DateTime = function (config) {
 
 Ext.extend(infoBlock.combo.DateTime, Ext.ux.form.DateTime);
 Ext.reg('infoblock-combo-dates',infoBlock.combo.DateTime);
+
+infoBlock.combo.Chunk = function (config) {
+    config = config || {};
+    Ext.applyIf(config, {
+        name: 'chunk',
+        hiddenName: config.name || 'chunk',
+        displayField: 'name',
+        valueField: 'id',
+        editable: true,
+        fields: ['id', 'name'],
+        pageSize: 20,
+        emptyText: _('infoblock_combo_select'),
+        hideMode: 'offsets',
+        url: infoBlock.config['connector_url'],
+        baseParams: {
+            action: 'mgr/system/element/chunk/getlist',
+            mode: 'chunks'
+        }
+    });
+    infoBlock.combo.Chunk.superclass.constructor.call(this, config);
+};
+Ext.extend(infoBlock.combo.Chunk, MODx.combo.ComboBox);
+Ext.reg('infoblock-combo-chunk', infoBlock.combo.Chunk);

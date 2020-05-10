@@ -155,7 +155,9 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 : modX::LOG_LEVEL_ERROR;
             $modx->log($level, $response['message']);
         }
+
         $success = true;
+
         break;
 
     case xPDOTransport::ACTION_UNINSTALL:

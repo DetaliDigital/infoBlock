@@ -19,6 +19,8 @@ $_lang['infoblock_item_active'] = 'Активно';
 $_lang['infoblock_position_id'] = 'Id';
 $_lang['infoblock_position_name'] = 'Название';
 $_lang['infoblock_position_alias'] = 'Псевдоним';
+$_lang['infoblock_position_chunk'] = 'Шаблон инфоблока';
+
 $_lang['infoblock_item_position'] = 'Позиция';
 $_lang['infoblock_item_createdon'] = 'Опубликован';
 $_lang['infoblock_item_tabs_content'] = 'Содержание';
