@@ -182,7 +182,7 @@ Ext.extend(infoBlock.grid.Items, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'name', 'description', 'position_id', 'active', 'actions'];
+        return ['id', 'name', 'description', 'position_name', 'active', 'createdon', 'actions'];
     },
 
     getColumns: function () {
@@ -198,15 +198,14 @@ Ext.extend(infoBlock.grid.Items, MODx.grid.Grid, {
             width: 200,
         }, {
             header: _('infoblock_item_position'),
-            dataIndex: 'position_id',
+            dataIndex: 'position_name',
             sortable: false,
             width: 250,
         }, {
-            header: _('infoblock_item_active'),
-            dataIndex: 'active',
-            renderer: infoBlock.utils.renderBoolean,
-            sortable: true,
-            width: 100,
+            header: _('infoblock_item_createdon'),
+            dataIndex: 'createdon',
+            sortable: false,
+            width: 250,
         }, {
             header: _('infoblock_grid_actions'),
             dataIndex: 'actions',

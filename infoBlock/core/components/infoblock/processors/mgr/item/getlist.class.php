@@ -33,6 +33,11 @@ class infoBlockItemGetListProcessor extends modObjectGetListProcessor
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
         $query = trim($this->getProperty('query'));
+
+        $c->leftJoin('infoBlockPosition', 'infoBlockPosition', 'infoBlockPosition.id = infoBlockItem.position_id');
+        $c->select(array($this->modx->getSelectColumns('infoBlockItem', 'infoBlockItem')));
+        $c->select(array('infoBlockPosition.name as position_name'));
+
         if ($query) {
             $c->where([
                 'name:LIKE' => "%{$query}%",
@@ -51,7 +56,9 @@ class infoBlockItemGetListProcessor extends modObjectGetListProcessor
      */
     public function prepareRow(xPDOObject $object)
     {
+
         $array = $object->toArray();
+
         $array['actions'] = [];
 
         // Edit
@@ -98,9 +105,9 @@ class infoBlockItemGetListProcessor extends modObjectGetListProcessor
             'menu' => true,
         ];
 
+
         return $array;
     }
-
 }
 
 return 'infoBlockItemGetListProcessor';

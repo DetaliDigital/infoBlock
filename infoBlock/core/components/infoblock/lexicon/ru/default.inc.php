@@ -52,10 +52,12 @@ $_lang['infoblock_position_active'] = 'Включено';
 
 $_lang['infoblock_item_err_name'] = 'Вы должны указать имя элемента.';
 $_lang['infoblock_item_err_ae'] = 'Элемент с таким именем уже существует.';
+$_lang['infoblock_item_err_position'] = 'Пожалуйста укажите позицию при создании инфоблока.';
 $_lang['infoblock_item_err_nf'] = 'Элемент не найден.';
 $_lang['infoblock_item_err_ns'] = 'Элемент не указан.';
 $_lang['infoblock_item_err_remove'] = 'Ошибка при удалении элемента.';
 $_lang['infoblock_item_err_save'] = 'Ошибка при сохранении элемента.';
+
 
 $_lang['infoblock_grid_search'] = 'Поиск';
 $_lang['infoblock_grid_actions'] = 'Действия';

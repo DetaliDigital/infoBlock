@@ -199,7 +199,8 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
                     boxLabel: _('infoblock_item_active'),
                     name: 'active',
                     id: config.id + '-active',
-                }],
+                } 
+              ],
             }]
         },
         ];
