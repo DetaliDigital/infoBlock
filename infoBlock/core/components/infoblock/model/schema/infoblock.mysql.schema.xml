@@ -9,6 +9,7 @@
         <field key="content" dbtype="text" phptype="string" null="true" default=""/>
         <field key="url" dbtype="varchar" precision="255" phptype="string" null="null" default=""/>
         <field key="position_id" dbtype="int" precision="10" phptype="integer" null="false" />
+        <field key="menuindex" dbtype="int" precision="10" phptype="integer" null="false" />
         <field key="createdon" dbtype="datetime" phptype="datetime" null="true" />
         <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
 

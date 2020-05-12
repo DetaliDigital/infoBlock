@@ -14,8 +14,9 @@ $_lang['infoblock_item_image'] = 'Изображение';
 $_lang['infoblock_item_description'] = 'Аннотация';
 $_lang['infoblock_item_content'] = 'Содержание';
 $_lang['infoblock_item_url'] = 'Ссылка';
+$_lang['infoblock_item_menuindex'] = 'Позиция в меню';
 $_lang['infoblock_item_active'] = 'Активно';
-
+$_lang['infoblock_item_custom'] = 'Селект с тригерами';
 $_lang['infoblock_position_id'] = 'Id';
 $_lang['infoblock_position_name'] = 'Название';
 $_lang['infoblock_position_alias'] = 'Псевдоним';

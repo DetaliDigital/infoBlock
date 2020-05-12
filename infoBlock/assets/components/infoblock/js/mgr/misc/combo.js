@@ -62,18 +62,38 @@ MODx.combo.resources = function(config) {
 		baseParams: {
 			action: 'mgr/resource/getlist'
 		},
+    triggerConfig: {
+        tag: 'span',
+        cls: 'x-field-combo-btns',
+        cn: [
+            {tag: 'div', cls: 'x-form-trigger x-field-combo-list'},
+            {tag: 'div', cls: 'x-form-trigger x-field-combo-mytrigger'}
+        ]
+    },
+    onTriggerClick: function(event, btn) {
+        if (btn && Ext.get(btn).hasClass('x-field-combo-mytrigger')) {
+            alert('Нажата кнопка триггера 2');
+        } else {
+            MODx.combo.ComboBox.superclass.onTriggerClick.call(this);
+        }
+    },
 		forceSelection: false,
-		tpl: new Ext.XTemplate(''
-			+'<tpl for="."><div class="x-combo-list-item infoblock-resource-list-item">'
-				+'<tpl if="parents">'
-					+'<span class="parents">'
-						+'<tpl for="parents">'
-							+'<small>{pagetitle} / </small></br>'
-						+'</tpl>'
-					+'</span>'
-				+'</tpl>'
-			+'<span><tpl if="id"><sup><small>({id})</small></sup> </tpl><b>{pagetitle}</b></span>'
-			+'</div></tpl>',
+		tpl: new Ext.XTemplate('\
+			 <tpl for=".">\
+          <div class="x-combo-list-item infoblock-resource-list-item">\
+				      <tpl if="parents">\
+					         <span class="parents">\
+						           <tpl for="parents">\
+							                <small>{pagetitle} / </small></br>\
+                       </tpl>\
+					         </span>\
+				      </tpl>\
+                  <span>\
+                      <tpl if="id">\
+                          <sup><small>({id})</small></sup>\
+                          </tpl><b>{pagetitle}</b></span>\
+          </div>\
+      </tpl>',
     {
 		compiled: true
 		}),
@@ -107,6 +127,21 @@ infoBlock.combo.Position = function (config) {
             action: 'mgr/position/getlist',
             combo: true,
             id: config.value,
+        },
+        triggerConfig: {
+            tag: 'span',
+            cls: 'x-field-combo-btns',
+            cn: [
+                {tag: 'div', cls: 'x-form-trigger x-field-combo-list'},
+                {tag: 'div', cls: 'x-form-trigger x-field-combo-mytrigger'}
+            ]
+        },
+        onTriggerClick: function(event, btn) {
+            if (btn && Ext.get(btn).hasClass('x-field-combo-mytrigger')) {
+                alert('Нажата кнопка триггера 2');
+            } else {
+                MODx.combo.ComboBox.superclass.onTriggerClick.call(this);
+            }
         },
         tpl: new Ext.XTemplate(''
     			+'<tpl for="."><div class="x-combo-list-item infoblock-position-list-item">'
@@ -162,6 +197,21 @@ infoBlock.combo.Chunk = function (config) {
         baseParams: {
             action: 'mgr/system/element/chunk/getlist',
             mode: 'chunks'
+        },
+        triggerConfig: {
+            tag: 'span',
+            cls: 'x-field-combo-btns',
+            cn: [
+                {tag: 'div', cls: 'x-form-trigger x-field-combo-list'},
+                {tag: 'div', cls: 'x-form-trigger x-field-combo-mytrigger'}
+            ]
+        },
+        onTriggerClick: function(event, btn) {
+            if (btn && Ext.get(btn).hasClass('x-field-combo-mytrigger')) {
+                alert('Нажата кнопка триггера 2');
+            } else {
+                MODx.combo.ComboBox.superclass.onTriggerClick.call(this);
+            }
         }
     });
     infoBlock.combo.Chunk.superclass.constructor.call(this, config);

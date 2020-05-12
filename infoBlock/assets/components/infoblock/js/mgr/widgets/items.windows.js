@@ -1,9 +1,11 @@
 
 infoBlock.window.CreateItem = function (config) {
+
     config = config || {};
     if (!config.id) {
         config.id = 'infoblock-item-window-create';
     }
+
     Ext.applyIf(config, {
         title: _('infoblock_item_create'),
         width: 800,
@@ -20,9 +22,9 @@ infoBlock.window.CreateItem = function (config) {
 
     infoBlock.window.CreateItem.superclass.constructor.call(this, config);
 
-};
+    };
 
-Ext.extend(infoBlock.window.CreateItem, MODx.Window, {
+    Ext.extend(infoBlock.window.CreateItem, MODx.Window, {
 
     getFields: function (config) {
       return [{
@@ -36,7 +38,11 @@ Ext.extend(infoBlock.window.CreateItem, MODx.Window, {
               layout: 'form',
               defaults: {msgTarget: 'under'},
               items: [{
-                  xtype: 'textfield',
+                  xtype: 'trigger',
+                  onTriggerClick: function (e,btn) {
+                      btn.previousSibling.value = '';
+                  },
+                  triggerClass: 'x-field-trigger-clear',
                   fieldLabel: _('infoblock_item_name'),
                   name: 'name',
                   id: config.id + '-name',
@@ -76,6 +82,13 @@ Ext.extend(infoBlock.window.CreateItem, MODx.Window, {
               columnWidth: .3,
               layout: 'form',
               items: [{
+                  xtype: 'numberfield',
+                  fieldLabel: _('infoblock_item_menuindex'),
+                  id: config.id + '-menuindex',
+                  name: 'menuindex',
+                  anchor: '99%',
+                  allowBlank: true,
+              }, {
                   xtype: 'infoblock-combo-position',
                   fieldLabel: _('infoblock_item_position'),
                   anchor: '99%',
@@ -142,7 +155,11 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
                 layout: 'form',
                 defaults: {msgTarget: 'under'},
                 items: [{
-                    xtype: 'textfield',
+                    xtype: 'trigger',
+                    onTriggerClick: function (e,btn) {
+                        btn.previousSibling.value = '';
+                    },
+                    triggerClass: 'x-field-trigger-clear',
                     fieldLabel: _('infoblock_item_name'),
                     name: 'name',
                     id: config.id + '-name',
@@ -170,7 +187,7 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
                     id: config.id + '-content',
                     height: 200,
                     anchor: '99%',
-                } , {
+                }, {
         						xtype: 'infoblock-filter-resources',
         	          fieldLabel: _('infoblock_item_url'),
         						name: 'url',
@@ -182,6 +199,12 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
                 columnWidth: .3,
                 layout: 'form',
                 items: [{
+                    xtype: 'numberfield',
+                    fieldLabel: _('infoblock_item_menuindex'),
+                    name: 'menuindex',
+                    anchor: '99%',
+                    allowBlank: true,
+                }, {
                     xtype: 'infoblock-combo-position',
                     fieldLabel: _('infoblock_item_position'),
                     anchor: '99%',
@@ -199,7 +222,7 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
                     boxLabel: _('infoblock_item_active'),
                     name: 'active',
                     id: config.id + '-active',
-                } 
+                }
               ],
             }]
         },
@@ -210,6 +233,5 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
     }
 
 });
-
 
 Ext.reg('infoblock-item-window-update', infoBlock.window.UpdateItem);
