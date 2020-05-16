@@ -8,7 +8,7 @@ infoBlock.window.CreateItem = function (config) {
 
     Ext.applyIf(config, {
         title: _('infoblock_item_create'),
-        width: 800,
+        width: 900,
         autoHeight: true,
         url: infoBlock.config.connector_url,
         action: 'mgr/item/create',
@@ -34,7 +34,17 @@ infoBlock.window.CreateItem = function (config) {
       }, {
           layout: 'column',
           items: [{
-              columnWidth: .7,
+              columnWidth: .2,
+              layout: 'form',
+              defaults: {msgTarget: 'under'},
+              items: [{
+                id: 'currimg',
+                style: 'margin-top: 20px;',
+                cls: 'infoblock-thumb-preview',
+                html: '<img src="/assets/components/infoblock/img/noimage.jpg" width="174px" height="174" alt="Инфоблок привью изображения">'
+                }],
+          }, {
+              columnWidth: .5,
               layout: 'form',
               defaults: {msgTarget: 'under'},
               items: [{
@@ -64,7 +74,7 @@ infoBlock.window.CreateItem = function (config) {
                   anchor: '99%',
                   height: 50,
               }, {
-                  xtype: 'textarea',
+                  xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
                   fieldLabel: _('infoblock_item_content'),
                   name: 'content',
                   id: config.id + '-content',
@@ -125,7 +135,7 @@ infoBlock.window.UpdateItem = function (config) {
     }
     Ext.applyIf(config, {
         title: _('infoblock_item_update'),
-        width: 800,
+        width: 900,
         autoHeight: true,
         url: infoBlock.config.connector_url,
         action: 'mgr/item/update',
@@ -151,7 +161,18 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
         }, {
             layout: 'column',
             items: [{
-                columnWidth: .7,
+                columnWidth: .2,
+                layout: 'form',
+                defaults: {msgTarget: 'under'},
+                items: [{
+                  id: 'currimg',
+                  style: 'margin-top: 20px;',
+      		        cls: 'infoblock-thumb-preview',
+                  html: '<img src="/assets/components/infoblock/img/noimage.jpg" width="174px" height="174" alt="Инфоблок привью изображения">'
+                  }
+                ],
+            }, {
+                columnWidth: .53,
                 layout: 'form',
                 defaults: {msgTarget: 'under'},
                 items: [{
@@ -181,7 +202,7 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
                     anchor: '99%',
                     height: 50,
                 }, {
-                    xtype: 'textarea',
+                    xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea'
                     fieldLabel: _('infoblock_item_content'),
                     name: 'content',
                     id: config.id + '-content',
@@ -196,7 +217,7 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
         						allowBlank: true,
         				}],
             }, {
-                columnWidth: .3,
+                columnWidth: .27,
                 layout: 'form',
                 items: [{
                     xtype: 'numberfield',
