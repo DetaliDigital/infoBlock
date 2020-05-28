@@ -38,6 +38,7 @@ $_lang['infoblock_items_remove'] = 'Удалить элемент';
 $_lang['infoblock_item_remove_confirm'] = 'Вы уверены, что хотите удалить этот элемент?';
 $_lang['infoblock_items_remove_confirm'] = 'Вы уверены, что хотите удалить эти элементы?';
 $_lang['infoblock_item_active'] = 'Включено';
+$_lang['infoblock_item_alt'] = 'ALT';
 
 $_lang['infoblock_position_create'] = 'Создать позицию';
 $_lang['infoblock_position_update'] = 'Изменить элемент';

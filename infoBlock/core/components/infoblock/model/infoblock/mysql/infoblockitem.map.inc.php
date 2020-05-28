@@ -16,6 +16,7 @@ $xpdo_meta_map['infoBlockItem']= array (
     'content' => '',
     'url' => '',
     'position_id' => NULL,
+    'menuindex' => NULL,
     'createdon' => NULL,
     'active' => 1,
   ),
@@ -59,6 +60,13 @@ $xpdo_meta_map['infoBlockItem']= array (
       'default' => '',
     ),
     'position_id' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'phptype' => 'integer',
+      'null' => false,
+    ),
+    'menuindex' => 
     array (
       'dbtype' => 'int',
       'precision' => '10',

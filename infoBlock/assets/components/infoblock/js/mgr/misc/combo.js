@@ -47,6 +47,10 @@ Ext.extend(infoBlock.combo.Search, Ext.form.TwinTriggerField, {
 Ext.reg('infoblock-combo-search', infoBlock.combo.Search);
 Ext.reg('infoblock-field-search', infoBlock.combo.Search);
 
+// Combobox render resource
+/******************************************************/
+
+
 MODx.combo.resources = function(config) {
 	config = config || {};
 	Ext.applyIf(config,{
@@ -104,6 +108,10 @@ MODx.combo.resources = function(config) {
 
 Ext.extend(MODx.combo.resources,MODx.combo.ComboBox);
 Ext.reg('infoblock-filter-resources',MODx.combo.resources);
+
+// Combobox render Position
+/******************************************************/
+
 
 infoBlock.combo.Position = function (config) {
     config = config || {};
@@ -164,6 +172,10 @@ infoBlock.combo.Position = function (config) {
 Ext.extend(infoBlock.combo.Position,MODx.combo.ComboBox);
 Ext.reg('infoblock-combo-position',infoBlock.combo.Position);
 
+// Combobox render data
+/******************************************************/
+
+
 infoBlock.combo.DateTime = function (config) {
     config = config || {};
     Ext.applyIf(config, {
@@ -180,6 +192,10 @@ infoBlock.combo.DateTime = function (config) {
 
 Ext.extend(infoBlock.combo.DateTime, Ext.ux.form.DateTime);
 Ext.reg('infoblock-combo-dates',infoBlock.combo.DateTime);
+
+// Combobox render list chunk
+/******************************************************/
+
 
 infoBlock.combo.Chunk = function (config) {
     config = config || {};
@@ -218,3 +234,67 @@ infoBlock.combo.Chunk = function (config) {
 };
 Ext.extend(infoBlock.combo.Chunk, MODx.combo.ComboBox);
 Ext.reg('infoblock-combo-chunk', infoBlock.combo.Chunk);
+
+MODx.combo.AdBrowser = function(config) {
+	config = config || {};
+	Ext.applyIf(config,{
+		width: 300
+		,triggerAction: 'all'
+		,source: config.source || 1
+	});
+	MODx.combo.AdBrowser.superclass.constructor.call(this,config);
+	this.config = config;
+	this.browser = [];
+};
+
+// Combobox image
+/******************************************************/
+
+Ext.extend(MODx.combo.AdBrowser,MODx.combo.Browser,{
+	browser: null
+
+	,onTriggerClick : function(btn){
+		if (this.disabled){
+			return false;
+		}
+
+		var source = Ext.getCmp('modx-combo-source')
+		var source_id = source.getValue() || 1;
+		if (!this.browser[source]) {
+			this.browser[source] = MODx.load({
+				xtype: 'modx-browser'
+				,id: Ext.id()
+				,multiple: true
+				,source: source_id
+				,hideFiles: this.config.hideFiles || false
+				,rootVisible: this.config.rootVisible || false
+				,allowedFileTypes: this.config.allowedFileTypes || ''
+				,wctx: this.config.wctx || 'web'
+				,openTo: this.config.openTo || ''
+				,rootId: this.config.rootId || '/'
+				,hideSourceCombo: this.config.hideSourceCombo || false
+				,listeners: {
+					'select': {fn: function(data) {
+						this.setValue(data.relativeUrl);
+						this.fireEvent('select',data);
+						var matched = data.thumb.match(/source=([0-9]{1,})$/);
+						if  (matched && matched[1]) {
+							source.setValue(matched[1]);
+						}
+						else {
+							source.setValue('');
+						}
+					},scope:this}
+				}
+			});
+		}
+		this.browser[source].show(btn);
+
+		return true;
+	}
+
+	,onDestroy: function(){
+		MODx.combo.AdBrowser.superclass.onDestroy.call(this);
+	}
+});
+Ext.reg('modx-combo-adbrowser',MODx.combo.AdBrowser);

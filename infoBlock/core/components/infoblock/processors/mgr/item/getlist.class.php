@@ -35,7 +35,7 @@ class infoBlockItemGetListProcessor extends modObjectGetListProcessor
         $query = trim($this->getProperty('query'));
 
         $c->leftJoin('infoBlockPosition', 'infoBlockPosition', 'infoBlockPosition.id = infoBlockItem.position_id');
-        $c->select([$this->modx->getSelectColumns('infoBlockItem', 'infoBlockItem')]);
+        $c->select(array($this->modx->getSelectColumns('infoBlockItem', 'infoBlockItem')));
         $c->select(['infoBlockPosition.name as position_name']);
 
         if ($query) {
