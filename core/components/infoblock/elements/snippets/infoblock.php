@@ -2,6 +2,7 @@
 /** @var modX $modx */
 /** @var array $scriptProperties */
 /** @var infoBlock $infoBlock */
+
 $infoBlock = $modx->getService('infoBlock', 'infoBlock', MODX_CORE_PATH . 'components/infoblock/model/', $scriptProperties);
 if (!$infoBlock) {
     return 'Could not load infoBlock class!';
@@ -16,26 +17,31 @@ $outputSeparator = $modx->getOption('outputSeparator', $scriptProperties, "\n");
 $toPlaceholder = $modx->getOption('toPlaceholder', $scriptProperties, false);
 
 // Build query
-$c = $modx->newQuery('infoBlockItem');
-$c->sortby($sortby, $sortdir);
-$c->where(['active' => 1]);
-$c->limit($limit);
-$items = $modx->getIterator('infoBlockItem', $c);
 
-// Iterate through items
-$list = [];
-/** @var infoBlockItem $item */
-foreach ($items as $item) {
-    $list[] = $modx->getChunk($tpl, $item->toArray());
+$c = $modx->newQuery('infoBlockPosition');
+$c->where(['active' => 1 , 'id' => 1]);
+$c->limit(1);
+
+$q = $modx->newQuery('infoBlockItem');
+$q->sortby($sortby, $sortdir);
+$q->where(['active' => 1 , 'position_id' => 1]);
+$q->limit($limit);
+
+
+$positions = $modx->getIterator('infoBlockPosition', $c);
+$items = $modx->getIterator('infoBlockItem', $q);
+
+
+$output = [];
+
+foreach ($positions as $position) {
+    $output['positions'][] = $position->toArray();
+        foreach ($items as $item) {
+            $output['positions'][0]['items'][] = $item->toArray();
+        }
 }
 
-// Output
-$output = implode($outputSeparator, $list);
-if (!empty($toPlaceholder)) {
-    // If using a placeholder, output nothing and set output to specified placeholder
-    $modx->setPlaceholder($toPlaceholder, $output);
+/** @var pdoTools $pdoTools */
+$pdoTools = $modx->getService('pdoTools');
+return $pdoTools->getChunk($tpl, $output);
 
-    return '';
-}
-// By default just return output
-return $output;
