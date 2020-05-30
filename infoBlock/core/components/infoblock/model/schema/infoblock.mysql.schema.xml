@@ -23,6 +23,9 @@
     </object>
     <object class="infoBlockPosition" table="infoblock_positions" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" />
+        <field key="title" dbtype="varchar" precision="500" phptype="string" null="false" />
+        <field key="content" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="addfld" dbtype="text" phptype="string" null="true" default=""/>
         <field key="alias" dbtype="varchar" precision="255" phptype="string" null="false" />
         <field key="chunk" dbtype="int" precision="10" phptype="integer" null="false" />
         <field key="active" dbtype="tinyint" precision="1" phptype="integer" null="false" default="1" />
