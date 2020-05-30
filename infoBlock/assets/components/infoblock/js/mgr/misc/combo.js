@@ -211,7 +211,7 @@ infoBlock.combo.Chunk = function (config) {
         hideMode: 'offsets',
         url: infoBlock.config['connector_url'],
         baseParams: {
-            action: 'mgr/system/element/chunk/getlist',
+            action: 'mgr/chunk/getlist',
             mode: 'chunks'
         },
         triggerConfig: {
