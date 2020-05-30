@@ -64,7 +64,7 @@ infoBlock.window.CreateItem = function (config) {
                   anchor: '99%',
                   height: 50,
               }, {
-                  xtype: 'modx-texteditor',
+                  xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
                   fieldLabel: _('infoblock_item_content'),
                   name: 'content',
                   id: config.id + '-content',
@@ -181,7 +181,7 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
                     anchor: '99%',
                     height: 50,
                 }, {
-                    xtype: 'modx-texteditor',
+                    xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
                     fieldLabel: _('infoblock_item_content'),
                     name: 'content',
                     id: config.id + '-content',

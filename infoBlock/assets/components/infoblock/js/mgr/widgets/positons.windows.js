@@ -46,14 +46,14 @@ Ext.extend(infoBlock.window.CreatePosition, MODx.Window, {
                     anchor: '99%',
                     allowBlank: true,
                 }, {
-                    xtype: 'modx-texteditor',
+                    xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
                     fieldLabel: _('infoblock_position_content'),
                     name: 'content',
                     id: config.id + '-content',
                     height: 200,
                     anchor: '99%',
                 }, {
-                    xtype: 'modx-texteditor',
+                    xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
                     fieldLabel: _('infoblock_position_additional_field'),
                     name: 'addfld',
                     id: config.id + '-addfld',
@@ -144,14 +144,14 @@ Ext.extend(infoBlock.window.UpdatePosition, MODx.Window, {
                     anchor: '99%',
                     allowBlank: true,
                 }, {
-                    xtype: 'modx-texteditor',
+                    xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
                     fieldLabel: _('infoblock_position_content'),
                     name: 'content',
                     id: config.id + '-content',
                     height: 200,
                     anchor: '99%',
                 }, {
-                    xtype: 'modx-texteditor',
+                    xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
                     fieldLabel: _('infoblock_position_additional_field'),
                     name: 'addfld',
                     id: config.id + '-addfld',
