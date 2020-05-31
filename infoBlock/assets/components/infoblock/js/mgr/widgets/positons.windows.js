@@ -51,14 +51,24 @@ Ext.extend(infoBlock.window.CreatePosition, MODx.Window, {
                     name: 'content',
                     id: config.id + '-content',
                     height: 200,
+                    mimeType: 'text/html',
                     anchor: '99%',
+                    setValue: function (v) {
+                        v = '';
+                        this.superclass().setValue.call(this, v);
+                    }
                 }, {
                     xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
                     fieldLabel: _('infoblock_position_additional_field'),
                     name: 'addfld',
                     id: config.id + '-addfld',
                     height: 200,
+                    mimeType: 'text/html',
                     anchor: '99%',
+                    setValue: function (v) {
+                        v = '';
+                        this.superclass().setValue.call(this, v);
+                    }
                 }
                 ]
             }, {
@@ -149,6 +159,7 @@ Ext.extend(infoBlock.window.UpdatePosition, MODx.Window, {
                     name: 'content',
                     id: config.id + '-content',
                     height: 200,
+                    mimeType: 'text/html',
                     anchor: '99%',
                 }, {
                     xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
@@ -156,6 +167,7 @@ Ext.extend(infoBlock.window.UpdatePosition, MODx.Window, {
                     name: 'addfld',
                     id: config.id + '-addfld',
                     height: 200,
+                    mimeType: 'text/html',
                     anchor: '99%',
                 }
                 ]

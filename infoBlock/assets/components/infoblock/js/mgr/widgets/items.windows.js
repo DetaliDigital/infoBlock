@@ -69,7 +69,13 @@ infoBlock.window.CreateItem = function (config) {
                   name: 'content',
                   id: config.id + '-content',
                   height: 200,
+                  mimeType: 'text/html',
                   anchor: '99%',
+                  enableKeyEvents: true,
+                  setValue: function (v) {
+                      v = '';
+                      this.superclass().setValue.call(this, v);
+                  }
               }, {
                   xtype: 'infoblock-filter-resources',
                   fieldLabel: _('infoblock_item_url'),
@@ -77,7 +83,7 @@ infoBlock.window.CreateItem = function (config) {
                   id: config.id + '-url',
                   anchor: '99%',
                   allowBlank: true,
-              } ],
+              }],
           }, {
               columnWidth: .3,
               layout: 'form',
@@ -186,6 +192,7 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
                     name: 'content',
                     id: config.id + '-content',
                     height: 200,
+                    mimeType: 'text/html',
                     anchor: '99%',
                 }, {
                     xtype: 'infoblock-filter-resources',
