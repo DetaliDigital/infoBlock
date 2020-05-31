@@ -32,14 +32,22 @@ Ext.extend(infoBlock.window.CreatePosition, MODx.Window, {
                 layout: 'form',
                 defaults: {msgTarget: 'under'},
                 items: [{
-                    xtype: 'textfield',
+                    xtype: 'trigger',
+                    onTriggerClick: function (e,btn) {
+                        btn.previousSibling.value = '';
+                    },
+                    triggerClass: 'x-field-trigger-clear',
                     fieldLabel: _('infoblock_position_name'),
                     name: 'name',
                     id: config.id + '-name',
                     anchor: '99%',
                     allowBlank: false,
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'trigger',
+                    onTriggerClick: function (e,btn) {
+                        btn.previousSibling.value = '';
+                    },
+                    triggerClass: 'x-field-trigger-clear',
                     fieldLabel: _('infoblock_position_title'),
                     name: 'title',
                     id: config.id + '-title',

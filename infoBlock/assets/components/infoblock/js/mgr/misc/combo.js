@@ -61,7 +61,7 @@ MODx.combo.resources = function(config) {
 		editable: true,
 		fields: ['id','pagetitle','url','parents'],
 		pageSize: 10,
-		emptyText: '',
+        emptyText: _('no'),
 		url: infoBlock.config.connectorUrl,
 		baseParams: {
 			action: 'mgr/resource/getlist'
@@ -71,12 +71,12 @@ MODx.combo.resources = function(config) {
         cls: 'x-field-combo-btns',
         cn: [
             {tag: 'div', cls: 'x-form-trigger x-field-combo-list'},
-            {tag: 'div', cls: 'x-form-trigger x-field-combo-mytrigger'}
+            {tag: 'div', cls: 'x-form-trigger x-field-combo-trigger-clear'}
         ]
     },
     onTriggerClick: function(event, btn) {
-        if (btn && Ext.get(btn).hasClass('x-field-combo-mytrigger')) {
-            alert('Нажата кнопка триггера 2');
+        if (btn && Ext.get(btn).hasClass('x-field-combo-trigger-clear')) {
+            this.setValue('Нет');
         } else {
             MODx.combo.ComboBox.superclass.onTriggerClick.call(this);
         }
@@ -141,12 +141,12 @@ infoBlock.combo.Position = function (config) {
             cls: 'x-field-combo-btns',
             cn: [
                 {tag: 'div', cls: 'x-form-trigger x-field-combo-list'},
-                {tag: 'div', cls: 'x-form-trigger x-field-combo-mytrigger'}
+                {tag: 'div', cls: 'x-form-trigger x-field-combo-trigger-clear'}
             ]
         },
         onTriggerClick: function(event, btn) {
-            if (btn && Ext.get(btn).hasClass('x-field-combo-mytrigger')) {
-                alert('Нажата кнопка триггера 2');
+            if (btn && Ext.get(btn).hasClass('x-field-combo-trigger-clear')) {
+                this.setValue('Нет');
             } else {
                 MODx.combo.ComboBox.superclass.onTriggerClick.call(this);
             }
@@ -209,6 +209,7 @@ infoBlock.combo.Chunk = function (config) {
         pageSize: 20,
         emptyText: _('infoblock_combo_select'),
         hideMode: 'offsets',
+        emptyText: _('no'),
         url: infoBlock.config['connector_url'],
         baseParams: {
             action: 'mgr/chunk/getlist',
@@ -219,12 +220,12 @@ infoBlock.combo.Chunk = function (config) {
             cls: 'x-field-combo-btns',
             cn: [
                 {tag: 'div', cls: 'x-form-trigger x-field-combo-list'},
-                {tag: 'div', cls: 'x-form-trigger x-field-combo-mytrigger'}
+                {tag: 'div', cls: 'x-form-trigger x-field-combo-trigger-clear'}
             ]
         },
         onTriggerClick: function(event, btn) {
-            if (btn && Ext.get(btn).hasClass('x-field-combo-mytrigger')) {
-                alert('Нажата кнопка триггера 2');
+            if (btn && Ext.get(btn).hasClass('x-field-combo-trigger-clear')) {
+                this.setValue('Нет');
             } else {
                 MODx.combo.ComboBox.superclass.onTriggerClick.call(this);
             }
