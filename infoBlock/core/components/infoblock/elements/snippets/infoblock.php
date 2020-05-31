@@ -42,5 +42,9 @@ foreach ($positions as $position) {
 }
 
 /** @var pdoTools $pdoTools */
+
+$chunk = $modx->getObject('modChunk', $output['positions'][0]['chunk']);
+$tpl = $chunk->get('name');
+
 $pdoTools = $modx->getService('pdoTools');
 return $pdoTools->getChunk($tpl, $output);
