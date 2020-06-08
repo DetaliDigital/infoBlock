@@ -196,7 +196,6 @@ Ext.reg('infoblock-combo-dates',infoBlock.combo.DateTime);
 // Combobox render list chunk
 /******************************************************/
 
-
 infoBlock.combo.Chunk = function (config) {
     config = config || {};
     Ext.applyIf(config, {

@@ -48,6 +48,11 @@ class infoBlockItemGetListProcessor extends modObjectGetListProcessor
             ]);
         }
 
+        $position = trim($this->getProperty('position'));
+        if (!empty($position)) {
+            $c->where("{$this->objectType}.position_id={$position}");
+        }
+
         return $c;
     }
 
