@@ -14,17 +14,17 @@ $sortby = $modx->getOption('sortby', $scriptProperties, 'name');
 $sortdir = $modx->getOption('sortbir', $scriptProperties, 'ASC');
 $limit = $modx->getOption('limit', $scriptProperties, 5);
 $outputSeparator = $modx->getOption('outputSeparator', $scriptProperties, "\n");
-$toPlaceholder = $modx->getOption('toPlaceholder', $scriptProperties, false);
+$id = $modx->getOption('id', $scriptProperties, 1);
 
 // Build query
 
 $c = $modx->newQuery('infoBlockPosition');
-$c->where(['active' => 1 , 'id' => 1]);
+$c->where(['active' => 1 , 'id' => $id]);
 $c->limit(1);
 
 $q = $modx->newQuery('infoBlockItem');
 $q->sortby($sortby, $sortdir);
-$q->where(['active' => 1 , 'position_id' => 1]);
+$q->where(['active' => 1 , 'position_id' => $id]);
 $q->limit($limit);
 
 
@@ -36,12 +36,15 @@ $output = [];
 
 foreach ($positions as $position) {
     $output['positions'][] = $position->toArray();
-        foreach ($items as $item) {
-            $output['positions'][0]['items'][] = $item->toArray();
-        }
+    foreach ($items as $item) {
+        $output['positions'][0]['items'][] = $item->toArray();
+    }
 }
 
 /** @var pdoTools $pdoTools */
+
+$chunk = $modx->getObject('modChunk', $output['positions'][0]['chunk']);
+$tpl = $chunk->get('name');
+
 $pdoTools = $modx->getService('pdoTools');
 return $pdoTools->getChunk($tpl, $output);
-

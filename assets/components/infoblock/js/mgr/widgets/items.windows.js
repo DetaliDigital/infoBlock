@@ -8,7 +8,7 @@ infoBlock.window.CreateItem = function (config) {
 
     Ext.applyIf(config, {
         title: _('infoblock_item_create'),
-        width: 900,
+        width: 800,
         autoHeight: true,
         url: infoBlock.config.connector_url,
         action: 'mgr/item/create',
@@ -34,17 +34,7 @@ infoBlock.window.CreateItem = function (config) {
       }, {
           layout: 'column',
           items: [{
-              columnWidth: .2,
-              layout: 'form',
-              defaults: {msgTarget: 'under'},
-              items: [{
-                id: 'currimg',
-                style: 'margin-top: 20px;',
-                cls: 'infoblock-thumb-preview',
-                html: '<img src="/assets/components/infoblock/img/noimage.jpg" width="174px" height="174" alt="Инфоблок привью изображения">'
-                }],
-          }, {
-              columnWidth: .5,
+              columnWidth: .7,
               layout: 'form',
               defaults: {msgTarget: 'under'},
               items: [{
@@ -74,12 +64,18 @@ infoBlock.window.CreateItem = function (config) {
                   anchor: '99%',
                   height: 50,
               }, {
-                  xtype: 'textarea',
+                  xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
                   fieldLabel: _('infoblock_item_content'),
                   name: 'content',
                   id: config.id + '-content',
                   height: 200,
+                  mimeType: 'text/html',
                   anchor: '99%',
+                  enableKeyEvents: true,
+                  setValue: function (v) {
+                      v = '';
+                      this.superclass().setValue.call(this, v);
+                  }
               }, {
                   xtype: 'infoblock-filter-resources',
                   fieldLabel: _('infoblock_item_url'),
@@ -87,7 +83,7 @@ infoBlock.window.CreateItem = function (config) {
                   id: config.id + '-url',
                   anchor: '99%',
                   allowBlank: true,
-              } ],
+              }],
           }, {
               columnWidth: .3,
               layout: 'form',
@@ -161,18 +157,7 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
         }, {
             layout: 'column',
             items: [{
-                columnWidth: .2,
-                layout: 'form',
-                defaults: {msgTarget: 'under'},
-                items: [{
-                  id: 'currimg',
-                  style: 'margin-top: 20px;',
-      		        cls: 'infoblock-thumb-preview',
-                  html: '<img src="/assets/components/infoblock/img/noimage.jpg" width="174px" height="174" alt="Инфоблок привью изображения">'
-                  }
-                ],
-            }, {
-                columnWidth: .53,
+                columnWidth: .7,
                 layout: 'form',
                 defaults: {msgTarget: 'under'},
                 items: [{
@@ -202,22 +187,23 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
                     anchor: '99%',
                     height: 50,
                 }, {
-                    xtype: 'textarea',
+                    xtype: Ext.ComponentMgr.types['modx-texteditor'] ? 'modx-texteditor' : 'textarea',
                     fieldLabel: _('infoblock_item_content'),
                     name: 'content',
                     id: config.id + '-content',
                     height: 200,
+                    mimeType: 'text/html',
                     anchor: '99%',
                 }, {
-        						xtype: 'infoblock-filter-resources',
-        	          fieldLabel: _('infoblock_item_url'),
-        						name: 'url',
+                    xtype: 'infoblock-filter-resources',
+                    fieldLabel: _('infoblock_item_url'),
+                    name: 'url',
                     id: config.id + '-url',
-        						anchor: '99%',
-        						allowBlank: true,
-        				}],
+                    anchor: '99%',
+                    allowBlank: true,
+                }],
             }, {
-                columnWidth: .27,
+                columnWidth: .3,
                 layout: 'form',
                 items: [{
                     xtype: 'numberfield',

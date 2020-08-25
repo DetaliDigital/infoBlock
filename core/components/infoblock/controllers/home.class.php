@@ -58,15 +58,27 @@ class infoBlockHomeManagerController extends modExtraManagerController
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/misc/combo.js');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/widgets/items.grid.js');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/widgets/items.windows.js');
+        $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/widgets/positions.grid.js');
+        $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/widgets/positons.windows.js');
+        $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/widgets/items.gallery.windows.js');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/widgets/home.panel.js');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/sections/home.js');
+
+
+
+
+// Конфиги добавил
 
         $this->addHtml('<script type="text/javascript">
         infoBlock.config = ' . json_encode($this->infoBlock->config) . ';
         infoBlock.config.connector_url = "' . $this->infoBlock->config['connectorUrl'] . '";
         Ext.onReady(function() {MODx.load({ xtype: "infoblock-page-home"});});
+        ;
         </script>');
+
+
     }
+
 
 
     /**

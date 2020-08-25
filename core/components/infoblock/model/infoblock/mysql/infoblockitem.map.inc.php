@@ -11,7 +11,13 @@ $xpdo_meta_map['infoBlockItem']= array (
   'fields' => 
   array (
     'name' => '',
+    'image' => NULL,
     'description' => '',
+    'content' => '',
+    'url' => '',
+    'position_id' => NULL,
+    'menuindex' => NULL,
+    'createdon' => NULL,
     'active' => 1,
   ),
   'fieldMeta' => 
@@ -24,12 +30,54 @@ $xpdo_meta_map['infoBlockItem']= array (
       'null' => false,
       'default' => '',
     ),
+    'image' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+    ),
     'description' => 
     array (
       'dbtype' => 'text',
       'phptype' => 'string',
       'null' => true,
       'default' => '',
+    ),
+    'content' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => true,
+      'default' => '',
+    ),
+    'url' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => true,
+      'default' => '',
+    ),
+    'position_id' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'phptype' => 'integer',
+      'null' => false,
+    ),
+    'menuindex' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'phptype' => 'integer',
+      'null' => false,
+    ),
+    'createdon' => 
+    array (
+      'dbtype' => 'datetime',
+      'phptype' => 'datetime',
+      'null' => true,
     ),
     'active' => 
     array (
@@ -73,6 +121,17 @@ $xpdo_meta_map['infoBlockItem']= array (
           'null' => false,
         ),
       ),
+    ),
+  ),
+  'aggregates' => 
+  array (
+    'infoBlockPosition' => 
+    array (
+      'class' => 'infoBlockPosition',
+      'local' => 'position_id',
+      'foreign' => 'id',
+      'cardinality' => 'one',
+      'owner' => 'foreign',
     ),
   ),
 );

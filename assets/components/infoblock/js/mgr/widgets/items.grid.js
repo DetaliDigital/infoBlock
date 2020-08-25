@@ -226,6 +226,24 @@ Ext.extend(infoBlock.grid.Items, MODx.grid.Grid, {
             text: '<i class="icon icon-plus"></i>&nbsp;' + _('infoblock_item_create'),
             handler: this.createItem,
             scope: this
+        }, {
+            xtype: 'infoblock-combo-position',
+            name: 'position',
+            width: 210,
+            custm: true,
+            clear: true,
+            addall: true,
+            value: '',
+            listeners: {
+                select: {
+                    fn: this._filterByCombo,
+                    scope: this
+                },
+                afterrender: {
+                    fn: this._filterByCombo,
+                    scope: this
+                }
+            }
         }, '->', {
             xtype: 'infoblock-field-search',
             width: 250,
@@ -276,6 +294,11 @@ Ext.extend(infoBlock.grid.Items, MODx.grid.Grid, {
         }
 
         return ids;
+    },
+
+    _filterByCombo: function (cb) {
+        this.getStore().baseParams[cb.name] = cb.value;
+        this.getBottomToolbar().changePage(1);
     },
 
     _doSearch: function (tf) {
