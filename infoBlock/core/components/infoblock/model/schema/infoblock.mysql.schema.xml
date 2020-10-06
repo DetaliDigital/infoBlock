@@ -28,6 +28,9 @@
         <field key="addfld" dbtype="text" phptype="string" null="true" default=""/>
         <field key="alias" dbtype="varchar" precision="255" phptype="string" null="false" />
         <field key="chunk" dbtype="int" precision="10" phptype="integer" null="false" />
+        <field key="templates" dbtype="text" phptype="json" null="true" />
+        <field key="parents" dbtype="text" phptype="json" null="true" />
+        <field key="classes" dbtype="text" phptype="json" null="true" />
         <field key="active" dbtype="tinyint" precision="1" phptype="integer" null="false" default="1" />
         <index alias="name" name="name" primary="false" unique="false" type="BTREE">
             <column key="name" length="" collation="A" null="false"/>

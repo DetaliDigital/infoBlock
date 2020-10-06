@@ -235,3 +235,243 @@ infoBlock.combo.Chunk = function (config) {
 Ext.extend(infoBlock.combo.Chunk, MODx.combo.ComboBox);
 Ext.reg('infoblock-combo-chunk', infoBlock.combo.Chunk);
 
+// Combobox render list templates
+/******************************************************/
+
+infoBlock.combo.templates = function (config) {
+    config = config || {};
+    Ext.applyIf(config, {
+        xtype: 'superboxselect',
+        name: config['name'] || 'templates',
+        hiddenName: config['name'] || 'templates',
+        originalName: 'templatename',
+        displayField: 'templatename',
+        displayFieldTpl: '{templatename} ({id})',
+        valueField: 'id',
+        hideMode: 'offsets',
+        emptyText: _('no'),
+        store: new Ext.data.JsonStore({
+            url: infoBlock.config['connector_url'],
+            baseParams: {
+                action: 'mgr/combo/templates/getlist',
+                combo: true,
+                id: config.value
+            },
+            root: 'results',
+            totalProperty: 'total',
+            autoLoad: true,
+            autoSave: false,
+            fields: ['id', 'templatename'],
+        }),
+        minChars: 2,
+        editable: true,
+        resizable: true,
+        typeAhead: false,
+        allowBlank: true,
+        forceFormValue: false,
+        allowAddNewData: true,
+        addNewDataOnBlur: true,
+        forceSameValueQuery: true,
+        triggerAction: 'all',
+        pageSize: 15,
+        anchor: '100%',
+        extraItemCls: 'x-tag',
+        clearBtnCls: 'x-form-trigger',
+        expandBtnCls: 'x-form-trigger',
+        listEmptyText: '<div style="padding: 7px;">в списке отсутствуют элементы</div>',
+        tpl: new Ext.XTemplate('\
+            <tpl for="."><div class="x-combo-list-item">\
+                <span>\
+                    {templatename}\
+                </span>\
+            </div></tpl>',
+            {compiled: true}
+        ),
+    });
+    ['name', 'hiddenName', 'originalName'].forEach(function (name) {
+        config[name] += '[]';
+    });
+    infoBlock.combo.templates.superclass.constructor.call(this, config);
+
+    this.on('newitem', function (combo, val) {
+        combo.addItem({id: val, templatename: val});
+    }, this);
+};
+
+Ext.extend(infoBlock.combo.templates, Ext.ux.form.SuperBoxSelect, {
+    initValue: function () {
+        let sbs = this;
+        window.setTimeout(function () {
+            if (Ext.isObject(sbs.value) || Ext.isArray(sbs.value)) {
+                sbs.setValueEx(sbs.value);
+                sbs.originalValue = sbs.getValue();
+            } else {
+                Ext.ux.form.SuperBoxSelect.superclass.initValue.call(sbs);
+            }
+            if (sbs.mode === 'remote') {
+                sbs.setOriginal = true;
+            }
+        }, 700);
+    },
+});
+
+Ext.reg('infoblock-combo-templates', infoBlock.combo.templates);
+
+infoBlock.combo.parents = function(config) {
+    config = config || {};
+
+    Ext.applyIf(config, {
+        xtype: 'superboxselect',
+        name: 'parents',
+        fieldLabel: config['name'] || 'parents',
+        hiddenName: config['name'] || 'parents',
+        originalName: config['name'] || 'parents',
+        displayField: 'pagetitle',
+        displayFieldTpl: '{pagetitle} ({id})',
+        valueField: 'id',
+        emptyText: _('no'),
+        store: new Ext.data.JsonStore({
+            url: infoBlock.config['connector_url'],
+            baseParams: {
+                action: 'mgr/combo/modresources/getlist',
+                combo: true,
+                id: config.value
+            },
+            root: 'results',
+            totalProperty: 'total',
+            autoLoad: true,
+            autoSave: false,
+            fields: ['id', 'pagetitle'],
+        }),
+        minChars: 2,
+        editable: true,
+        resizable: true,
+        typeAhead: false,
+        allowBlank: true,
+        forceFormValue: false,
+        allowAddNewData: true,
+        addNewDataOnBlur: true,
+        forceSameValueQuery: true,
+        triggerAction: 'all',
+        pageSize: 15,
+        anchor: '100%',
+        extraItemCls: 'x-tag',
+        clearBtnCls: 'x-form-trigger',
+        expandBtnCls: 'x-form-trigger',
+        listEmptyText: '<div style="padding: 7px;">в списке отсутствуют элементы</div>',
+        tpl: new Ext.XTemplate('\
+            <tpl for="."><div class="x-combo-list-item">\
+                <span>\
+                    {pagetitle}\
+                </span>\
+            </div></tpl>',
+            {compiled: true}
+        ),
+    });
+    ['name', 'hiddenName', 'originalName'].forEach(function (name) {
+        config[name] += '[]';
+    });
+    infoBlock.combo.parents.superclass.constructor.call(this,config);
+
+    this.on('newitem', function (combo, val) {
+        combo.addItem({id: val, pagetitle: val});
+    }, this);
+};
+Ext.extend(infoBlock.combo.parents, Ext.ux.form.SuperBoxSelect, {
+    initValue: function () {
+        let sbs = this;
+        window.setTimeout(function () {
+            if (Ext.isObject(sbs.value) || Ext.isArray(sbs.value)) {
+                sbs.setValueEx(sbs.value);
+                sbs.originalValue = sbs.getValue();
+            } else {
+                Ext.ux.form.SuperBoxSelect.superclass.initValue.call(sbs);
+            }
+            if (sbs.mode === 'remote') {
+                sbs.setOriginal = true;
+            }
+        }, 700);
+    },
+});
+
+Ext.reg('infoblock-combo-parents', infoBlock.combo.parents);
+
+infoBlock.combo.classes = function(config) {
+    config = config || {};
+
+    Ext.applyIf(config, {
+        xtype: 'superboxselect',
+        name: 'classes',
+        fieldLabel: config['name'] || 'classes',
+        hiddenName: config['name'] || 'classes',
+        originalName: config['name'] || 'classes',
+        displayField: 'name',
+        valueField: 'id',
+        emptyText: _('no'),
+        store: new Ext.data.JsonStore({
+            url: infoBlock.config['connector_url'],
+            baseParams: {
+                action: 'mgr/combo/classes/getlist',
+                combo: true,
+                id: config.value,
+                skip: 'modXMLRPCResource',
+                'class': 'modResource'
+            },
+            root: 'results',
+            totalProperty: 'total',
+            autoLoad: true,
+            autoSave: false,
+            fields: ['id','name'],
+        }),
+        minChars: 2,
+        editable: true,
+        resizable: true,
+        typeAhead: false,
+        allowBlank: true,
+        forceFormValue: false,
+        allowAddNewData: true,
+        addNewDataOnBlur: true,
+        forceSameValueQuery: true,
+        triggerAction: 'all',
+        pageSize: 15,
+        anchor: '100%',
+        extraItemCls: 'x-tag',
+        clearBtnCls: 'x-form-trigger',
+        expandBtnCls: 'x-form-trigger',
+        listEmptyText: '<div style="padding: 7px;">в списке отсутствуют элементы</div>',
+        tpl: new Ext.XTemplate('\
+            <tpl for="."><div class="x-combo-list-item">\
+                <span>\
+                    {name}\
+                </span>\
+            </div></tpl>',
+            {compiled: true}
+        ),
+    });
+    ['name', 'hiddenName', 'originalName'].forEach(function (name) {
+        config[name] += '[]';
+    });
+    infoBlock.combo.classes.superclass.constructor.call(this,config);
+
+    this.on('newitem', function (combo, val) {
+        combo.addItem({id: val, name: val});
+    }, this);
+};
+Ext.extend(infoBlock.combo.classes, Ext.ux.form.SuperBoxSelect, {
+    initValue: function () {
+        let sbs = this;
+        window.setTimeout(function () {
+            if (Ext.isObject(sbs.value) || Ext.isArray(sbs.value)) {
+                sbs.setValueEx(sbs.value);
+                sbs.originalValue = sbs.getValue();
+            } else {
+                Ext.ux.form.SuperBoxSelect.superclass.initValue.call(sbs);
+            }
+            if (sbs.mode === 'remote') {
+                sbs.setOriginal = true;
+            }
+        }, 700);
+    },
+});
+
+Ext.reg('infoblock-combo-classes', infoBlock.combo.classes);

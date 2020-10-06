@@ -16,8 +16,6 @@ class infoBlockItemCreateProcessor extends modObjectCreateProcessor
         $name = trim($this->getProperty('name'));
         if (empty($name)) {
           $this->modx->error->addField('name', $this->modx->lexicon('infoblock_item_err_name'));
-        } elseif ($this->modx->getCount($this->classKey, ['name' => $name])) {
-          $this->modx->error->addField('name', $this->modx->lexicon('infoblock_item_err_ae'));
         }
 
         // Output date if createdon == ''

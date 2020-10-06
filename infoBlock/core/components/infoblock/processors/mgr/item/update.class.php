@@ -37,8 +37,6 @@ class infoBlockItemUpdateProcessor extends modObjectUpdateProcessor
 
         if (empty($name)) {
             $this->modx->error->addField('name', $this->modx->lexicon('infoblock_item_err_name'));
-        } elseif ($this->modx->getCount($this->classKey, ['name' => $name, 'id:!=' => $id])) {
-            $this->modx->error->addField('name', $this->modx->lexicon('infoblock_item_err_ae'));
         }
 
         return parent::beforeSet();

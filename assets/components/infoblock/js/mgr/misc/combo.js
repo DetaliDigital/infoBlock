@@ -235,3 +235,27 @@ infoBlock.combo.Chunk = function (config) {
 Ext.extend(infoBlock.combo.Chunk, MODx.combo.ComboBox);
 Ext.reg('infoblock-combo-chunk', infoBlock.combo.Chunk);
 
+infoBlock.combo.classes = function(config) {
+    config = config || {};
+    Ext.applyIf(config,{
+        name: 'classes',
+        hiddenName: 'classes',
+        url: infoBlock.config['connector_url'],
+        baseParams: {
+            action: 'system/derivatives/getList',
+            skip: 'modXMLRPCResource',
+            'class': 'modResource'
+        }
+        ,displayField: 'name'
+        ,valueField: 'id'
+        ,fields: ['id','name']
+        ,forceSelection: true
+        ,typeAhead: false
+        ,editable: false
+        ,allowBlank: false
+        ,pageSize: 20
+    });
+    infoBlock.combo.classes.superclass.constructor.call(this,config);
+};
+Ext.extend(infoBlock.combo.classes,MODx.combo.ComboBox);
+Ext.reg('infoblock-combo-classes',infoBlock.combo.classes);

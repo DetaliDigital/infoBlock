@@ -5,7 +5,7 @@ infoBlock.window.CreatePosition = function (config) {
     }
     Ext.applyIf(config, {
         title: _('infoblock_position_create'),
-        width: 800,
+        width: 1100,
         autoHeight: true,
         url: infoBlock.config.connector_url,
         action: 'mgr/position/create',
@@ -101,6 +101,24 @@ Ext.extend(infoBlock.window.CreatePosition, MODx.Window, {
                     name: 'active',
                     id: config.id + '-active',
                     checked: true,
+                }, {
+                    xtype: 'infoblock-combo-templates',
+                    id: config.id + 'templates',
+                    fieldLabel: _('infoblock_position_templates'),
+                    name: 'templates',
+                    anchor: '99%'
+                }, {
+                    xtype: 'infoblock-combo-parents',
+                    id: config.id + 'parents',
+                    fieldLabel: _('infoblock_position_parents'),
+                    name: 'parents',
+                    anchor: '99%'
+                }, {
+                    xtype: 'infoblock-combo-classes',
+                    id: config.id + 'classes',
+                    fieldLabel: _('infoblock_position_classes'),
+                    name: 'classes',
+                    anchor: '99%'
                 }],
             }]
         },
@@ -121,7 +139,7 @@ infoBlock.window.UpdatePosition = function (config) {
     }
     Ext.applyIf(config, {
         title: _('infoblock_position_update'),
-        width: 800,
+        width: 1100,
         autoHeight: true,
         url: infoBlock.config.connector_url,
         action: 'mgr/position/update',
@@ -201,6 +219,24 @@ Ext.extend(infoBlock.window.UpdatePosition, MODx.Window, {
                     name: 'active',
                     id: config.id + '-active',
                     checked: true,
+                }, {
+                    xtype: 'infoblock-combo-templates',
+                    id: config.id + 'templates',
+                    fieldLabel: _('infoblock_position_templates'),
+                    name: 'templates',
+                    anchor: '99%'
+                }, {
+                    xtype: 'infoblock-combo-parents',
+                    id: config.id + 'parents',
+                    fieldLabel: _('infoblock_position_parents'),
+                    name: 'parents',
+                    anchor: '99%'
+                }, {
+                    xtype: 'infoblock-combo-classes',
+                    id: config.id + 'classes',
+                    fieldLabel: _('infoblock_position_classes'),
+                    name: 'classes',
+                    anchor: '99%'
                 }],
             }]
         },

@@ -25,6 +25,9 @@ $_lang['infoblock_position_chunk'] = 'Шаблон инфоблока';
 $_lang['infoblock_position_title'] = 'Заголовок';
 $_lang['infoblock_position_content'] = 'Cодержание';
 $_lang['infoblock_position_additional_field'] = 'Дополнительное поле';
+$_lang['infoblock_position_templates'] = 'Шаблон';
+$_lang['infoblock_position_parents'] = 'Родитель';
+$_lang['infoblock_position_classes'] = 'Тип документа';
 
 $_lang['infoblock_item_position'] = 'Позиция';
 $_lang['infoblock_item_createdon'] = 'Опубликован';
@@ -63,7 +66,6 @@ $_lang['infoblock_item_err_nf'] = 'Элемент не найден.';
 $_lang['infoblock_item_err_ns'] = 'Элемент не указан.';
 $_lang['infoblock_item_err_remove'] = 'Ошибка при удалении элемента.';
 $_lang['infoblock_item_err_save'] = 'Ошибка при сохранении элемента.';
-
 
 $_lang['infoblock_grid_search'] = 'Поиск';
 $_lang['infoblock_grid_actions'] = 'Действия';

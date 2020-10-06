@@ -8,6 +8,8 @@ if (!$infoBlock) {
     return 'Could not load infoBlock class!';
 }
 
+
+
 // Do your snippet code here. This demo grabs 5 items from our custom table.
 $tpl = $modx->getOption('tpl', $scriptProperties, 'Item');
 $sortby = $modx->getOption('sortby', $scriptProperties, 'name');
@@ -16,10 +18,16 @@ $limit = $modx->getOption('limit', $scriptProperties, 5);
 $outputSeparator = $modx->getOption('outputSeparator', $scriptProperties, "\n");
 $id = $modx->getOption('id', $scriptProperties, 1);
 
+
 // Build query
 
+
 $c = $modx->newQuery('infoBlockPosition');
-$c->where(['active' => 1 , 'id' => $id]);
+$c->where([
+    'active' => 1,
+    'id' => $id,
+]);
+
 $c->limit(1);
 
 $q = $modx->newQuery('infoBlockItem');
@@ -41,10 +49,11 @@ foreach ($positions as $position) {
     }
 }
 
+
 /** @var pdoTools $pdoTools */
 
 $chunk = $modx->getObject('modChunk', $output['positions'][0]['chunk']);
+$pdoTools = $modx->getService('pdoTools');
 $tpl = $chunk->get('name');
 
-$pdoTools = $modx->getService('pdoTools');
 return $pdoTools->getChunk($tpl, $output);
