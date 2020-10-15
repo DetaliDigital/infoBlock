@@ -114,8 +114,6 @@ class infoBlockPositionGetProcessor extends modObjectGetProcessor
             $data = array_merge($data, array($key => $rows));
         }
 
-        $this->modx->log(1, 'infoBlockPositionGetProcessor $data ' . print_r($data, 1));
-
         return $this->success('', $data);
     }
 

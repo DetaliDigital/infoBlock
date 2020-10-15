@@ -11,6 +11,7 @@ $_lang['infoblock_positions'] = 'Позиции';
 $_lang['infoblock_item_id'] = 'Id';
 $_lang['infoblock_item_name'] = 'Название';
 $_lang['infoblock_item_image'] = 'Изображение';
+$_lang['infoblock_item_icon'] = 'Иконка';
 $_lang['infoblock_item_description'] = 'Аннотация';
 $_lang['infoblock_item_content'] = 'Содержание';
 $_lang['infoblock_item_url'] = 'Ссылка';
