@@ -96,6 +96,13 @@ Ext.extend(infoBlock.window.CreatePosition, MODx.Window, {
                     anchor: '99%',
                     allowBlank: false,
                 }, {
+                    xtype: 'textfield',
+                    fieldLabel: _('infoblock_position_limit'),
+                    name: 'limit',
+                    id: config.id + '-limit',
+                    anchor: '99%',
+                    allowBlank: true,
+                }, {
                     xtype: 'xcheckbox',
                     boxLabel: _('infoblock_position_active'),
                     name: 'active',
@@ -213,6 +220,13 @@ Ext.extend(infoBlock.window.UpdatePosition, MODx.Window, {
                     id: config.id + '-alias',
                     anchor: '99%',
                     allowBlank: false,
+                }, {
+                    xtype: 'textfield',
+                    fieldLabel: _('infoblock_position_limit'),
+                    name: 'limit',
+                    id: config.id + '-limit',
+                    anchor: '99%',
+                    allowBlank: true,
                 }, {
                     xtype: 'xcheckbox',
                     boxLabel: _('infoblock_position_active'),

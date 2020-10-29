@@ -28,6 +28,7 @@
         <field key="content" dbtype="text" phptype="string" null="true" default=""/>
         <field key="addfld" dbtype="text" phptype="string" null="true" default=""/>
         <field key="alias" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="limit" dbtype="varchar" precision="255" phptype="string" null="false" />
         <field key="chunk" dbtype="int" precision="10" phptype="integer" null="false" />
         <field key="templates" dbtype="text" phptype="json" null="true" />
         <field key="parents" dbtype="text" phptype="json" null="true" />

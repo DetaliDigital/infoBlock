@@ -31,6 +31,14 @@ class infoBlockItemCreateProcessor extends modObjectCreateProcessor
         $this->modx->error->addField('position_id', $this->modx->lexicon('infoblock_item_err_position'));
         }
 
+        // Error settings level infoBlockPosition
+
+        $object = $this->modx->getObject('infoBlockPosition' , $position);
+
+        if ($this->modx->getCount($this->classKey, ['position_id' => $position]) >= $object->get('limit') && $object->get('limit') != null && $object->get('limit') != 0) {
+            $this->modx->error->failure('В настройке инфоблока ' . $object->get('name') . ' стоит ограничение не более ' . $object->get('limit') . ' элемента(ов). Обратите внимание, что данная настройка использульется администратором при условии, если в шаблоне отсутствует возможность вывода большего количества элементов.');
+        }
+
         return parent::beforeSet();
     }
 
