@@ -47,6 +47,7 @@ Ext.extend(infoBlock.window.CreateItem, MODx.Window, {
                     id: config.id + '-name',
                     anchor: '99%',
                     allowBlank: false,
+                    blankText: _('infoblock_item_err_name'),
                 }, {
                     layout: 'column',
                     items: [{
@@ -116,7 +117,9 @@ Ext.extend(infoBlock.window.CreateItem, MODx.Window, {
                     xtype: 'infoblock-combo-position',
                     fieldLabel: _('infoblock_item_position'),
                     anchor: '99%',
-                    allowBlank: true,
+                    allowBlank: false,
+                    blankText: _('infoblock_item_err_position'),
+                    msgTarget: 'under',
                 }, {
                     xtype: 'infoblock-combo-dates',
                     fieldLabel: _('infoblock_item_createdon'),
@@ -252,7 +255,7 @@ Ext.extend(infoBlock.window.UpdateItem, MODx.Window, {
                 xtype: 'infoblock-combo-position',
                 fieldLabel: _('infoblock_item_position'),
                 anchor: '99%',
-                allowBlank: true,
+                allowBlank: false,
             }, {
                 xtype: 'infoblock-combo-dates',
                 fieldLabel: _('infoblock_item_createdon'),

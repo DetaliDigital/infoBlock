@@ -112,7 +112,6 @@ Ext.reg('infoblock-filter-resources',MODx.combo.resources);
 // Combobox render Position
 /******************************************************/
 
-
 infoBlock.combo.Position = function (config) {
     config = config || {};
 

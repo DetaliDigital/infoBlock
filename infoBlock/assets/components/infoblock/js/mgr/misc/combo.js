@@ -50,7 +50,6 @@ Ext.reg('infoblock-field-search', infoBlock.combo.Search);
 // Combobox render resource
 /******************************************************/
 
-
 MODx.combo.resources = function(config) {
 	config = config || {};
 	Ext.applyIf(config,{
@@ -112,7 +111,6 @@ Ext.reg('infoblock-filter-resources',MODx.combo.resources);
 // Combobox render Position
 /******************************************************/
 
-
 infoBlock.combo.Position = function (config) {
     config = config || {};
 
@@ -128,7 +126,7 @@ infoBlock.combo.Position = function (config) {
         url: infoBlock.config['connector_url'],
         typeAhead: true,
         editable: true,
-        allowBlank: true,
+        allowBlank: false,
         emptyText: _('no'),
         minChars: 1,
         baseParams: {
@@ -146,7 +144,9 @@ infoBlock.combo.Position = function (config) {
         },
         onTriggerClick: function(event, btn) {
             if (btn && Ext.get(btn).hasClass('x-field-combo-trigger-clear')) {
-                this.setValue('Нет');
+                this.setValue(_('no'));
+                this.clearValue();
+                this.fireEvent('clear', this);
             } else {
                 MODx.combo.ComboBox.superclass.onTriggerClick.call(this);
             }

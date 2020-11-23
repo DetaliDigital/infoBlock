@@ -42,6 +42,7 @@ Ext.extend(infoBlock.window.CreatePosition, MODx.Window, {
                     id: config.id + '-name',
                     anchor: '99%',
                     allowBlank: false,
+                    blankText: _('infoblock_position_err_name'),
                 }, {
                     xtype: 'trigger',
                     onTriggerClick: function (e,btn) {
@@ -89,12 +90,18 @@ Ext.extend(infoBlock.window.CreatePosition, MODx.Window, {
                     name: 'chunk',
                     anchor: '99%'
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'trigger',
+                    onTriggerClick: function (e,btn) {
+                        btn.previousSibling.value = '';
+                    },
+                    triggerClass: 'x-field-trigger-clear',
                     fieldLabel: _('infoblock_position_alias'),
                     name: 'alias',
                     id: config.id + '-alias',
                     anchor: '99%',
                     allowBlank: false,
+                    blankText: _('infoblock_position_err_alias'),
+                    msgTarget: 'under'
                 }, {
                     xtype: 'textfield',
                     fieldLabel: _('infoblock_position_limit'),
@@ -214,12 +221,18 @@ Ext.extend(infoBlock.window.UpdatePosition, MODx.Window, {
                     name: 'chunk',
                     anchor: '99%'
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'trigger',
+                    onTriggerClick: function (e,btn) {
+                        btn.previousSibling.value = '';
+                    },
+                    triggerClass: 'x-field-trigger-clear',
                     fieldLabel: _('infoblock_position_alias'),
                     name: 'alias',
                     id: config.id + '-alias',
                     anchor: '99%',
                     allowBlank: false,
+                    blankText: _('infoblock_position_err_alias'),
+                    msgTarget: 'under'
                 }, {
                     xtype: 'textfield',
                     fieldLabel: _('infoblock_position_limit'),
@@ -227,6 +240,7 @@ Ext.extend(infoBlock.window.UpdatePosition, MODx.Window, {
                     id: config.id + '-limit',
                     anchor: '99%',
                     allowBlank: true,
+                    msgTarget: 'under'
                 }, {
                     xtype: 'xcheckbox',
                     boxLabel: _('infoblock_position_active'),

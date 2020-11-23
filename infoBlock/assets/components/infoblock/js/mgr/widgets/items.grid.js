@@ -240,6 +240,10 @@ Ext.extend(infoBlock.grid.Items, MODx.grid.Grid, {
                     scope: this
                 },
                 afterrender: {
+                    fn: this._clearByCombo,
+                    scope: this
+                },
+                clear: {
                     fn: this._filterByCombo,
                     scope: this
                 }
@@ -298,6 +302,11 @@ Ext.extend(infoBlock.grid.Items, MODx.grid.Grid, {
 
     _filterByCombo: function (cb) {
         this.getStore().baseParams[cb.name] = cb.value;
+        this.getBottomToolbar().changePage(1);
+    },
+
+    _clearByCombo: function () {
+        this.getStore().baseParams.name = '';
         this.getBottomToolbar().changePage(1);
     },
 

@@ -14,6 +14,8 @@ class infoBlockPositionCreateProcessor extends modObjectCreateProcessor
     public function beforeSet()
     {
         $name = trim($this->getProperty('name'));
+        $alias = trim($this->getProperty('alias'));
+
         if (empty($name)) {
             $this->modx->error->addField('name', $this->modx->lexicon('infoblock_position_err_name'));
         } elseif ($this->modx->getCount($this->classKey, ['name' => $name])) {

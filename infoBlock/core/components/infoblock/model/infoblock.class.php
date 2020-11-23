@@ -3,8 +3,8 @@
 class infoBlock
 {
     /** @var modX $modx */
-    public $modx;
 
+    public $modx;
 
     /**
      * @param modX $modx

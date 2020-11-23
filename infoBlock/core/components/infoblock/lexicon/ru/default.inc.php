@@ -31,7 +31,7 @@ $_lang['infoblock_position_templates'] = 'Шаблон';
 $_lang['infoblock_position_parents'] = 'Родитель';
 $_lang['infoblock_position_classes'] = 'Тип документа';
 
-$_lang['infoblock_item_position'] = 'Позиция';
+$_lang['infoblock_item_position'] = 'Инфоблок';
 $_lang['infoblock_item_createdon'] = 'Опубликован';
 $_lang['infoblock_item_tabs_content'] = 'Содержание';
 $_lang['infoblock_item_tabs_gallery'] = 'Галерея';
@@ -63,13 +63,15 @@ $_lang['infoblock_position_active'] = 'Включено';
 
 $_lang['infoblock_item_err_name'] = 'Вы должны указать имя элемента.';
 $_lang['infoblock_item_err_ae'] = 'Элемент с таким именем уже существует.';
-$_lang['infoblock_item_err_position'] = 'Пожалуйста укажите позицию при создании инфоблока.';
+$_lang['infoblock_position_err_name'] = 'Вы должны указать название инфоблока.';
+$_lang['infoblock_item_err_position'] = 'Выберите инфоблок.';
+$_lang['infoblock_position_err_alias'] = 'Вы должны указать псевдоним инфоблока';
 $_lang['infoblock_item_err_nf'] = 'Элемент не найден.';
 $_lang['infoblock_item_err_ns'] = 'Элемент не указан.';
 $_lang['infoblock_item_err_remove'] = 'Ошибка при удалении элемента.';
 $_lang['infoblock_item_err_save'] = 'Ошибка при сохранении элемента.';
 
-$_lang['infoblock_position_err_limit'] = 'Количество элементов привязанный к инфоблоку больше или равно, чем вы указываете в настройке';
+$_lang['infoblock_position_err_limit'] = 'Количество элементов с выбранной позицией - больше или равно, чем вы указываете в настройке';
 
 $_lang['infoblock_grid_search'] = 'Поиск';
 $_lang['infoblock_grid_actions'] = 'Действия';
