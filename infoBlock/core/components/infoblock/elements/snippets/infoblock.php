@@ -44,10 +44,6 @@ if ($q->prepare() && $q->stmt->execute()) {
     while ($outer = $q->stmt->fetch(PDO::FETCH_ASSOC)) {
 
         $tpl = $outer['chunk'];
-        $templates = $outer['templates'];
-        $parents = $outer['parents'];
-        $classes = $outer['classes'];
-
         $data['positions'][] = $outer;
         foreach ($items as $item) {
             $data['positions'][0]['items'][] = $item;
