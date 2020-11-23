@@ -312,7 +312,7 @@ Ext.extend(infoBlock.combo.templates, Ext.ux.form.SuperBoxSelect, {
                 Ext.ux.form.SuperBoxSelect.superclass.initValue.call(sbs);
             }
             if (sbs.mode === 'remote') {
-                sbs.value = 0;
+                sbs.setOriginal = true;
             }
             console.log(sbs.value);
         }, 700);
