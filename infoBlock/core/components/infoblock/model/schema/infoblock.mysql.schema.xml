@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model package="infoblock" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="infoblock"
        version="1.1">
-
     <object class="infoBlockItem" table="infoblock_items" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="image" dbtype="varchar" precision="255" phptype="string" null="false" />
@@ -41,5 +40,4 @@
             <column key="active" length="" collation="A" null="false"/>
         </index>
     </object>
-
 </model>

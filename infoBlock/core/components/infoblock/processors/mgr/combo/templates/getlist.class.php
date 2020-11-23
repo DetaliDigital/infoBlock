@@ -45,18 +45,20 @@ class infoBlockTemplateGetListProcessor extends modObjectGetListProcessor
      *
      * @return array
      */
+
     public function prepareRow(xPDOObject $object)
     {
-        $array = $object->toArray();
+        $data = [];
 
         if ($this->getProperty('combo')) {
-        $array = array(
-            'id' => $object->get('id'),
-            'templatename' => $object->get('templatename'),
-        );
+            $data = [
+                'id' => $object->get('id'),
+                'templatename' => $object->get('templatename'),
+            ];
         }
 
-        return $array;
+        return $data;
     }
 }
+
 return 'infoBlockTemplateGetListProcessor';

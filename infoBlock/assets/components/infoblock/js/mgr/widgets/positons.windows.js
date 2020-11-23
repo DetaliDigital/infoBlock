@@ -110,29 +110,17 @@ Ext.extend(infoBlock.window.CreatePosition, MODx.Window, {
                     anchor: '99%',
                     allowBlank: true,
                 }, {
-                    xtype: 'xcheckbox',
-                    boxLabel: _('infoblock_position_active'),
-                    name: 'active',
-                    id: config.id + '-active',
-                    checked: true,
-                }, {
                     xtype: 'infoblock-combo-templates',
                     id: config.id + 'templates',
                     fieldLabel: _('infoblock_position_templates'),
                     name: 'templates',
                     anchor: '99%'
-                }, {
-                    xtype: 'infoblock-combo-parents',
-                    id: config.id + 'parents',
-                    fieldLabel: _('infoblock_position_parents'),
-                    name: 'parents',
-                    anchor: '99%'
-                }, {
-                    xtype: 'infoblock-combo-classes',
-                    id: config.id + 'classes',
-                    fieldLabel: _('infoblock_position_classes'),
-                    name: 'classes',
-                    anchor: '99%'
+                },  {
+                    xtype: 'xcheckbox',
+                    boxLabel: _('infoblock_position_active'),
+                    name: 'active',
+                    id: config.id + '-active',
+                    checked: true,
                 }],
             }]
         },
@@ -242,29 +230,17 @@ Ext.extend(infoBlock.window.UpdatePosition, MODx.Window, {
                     allowBlank: true,
                     msgTarget: 'under'
                 }, {
-                    xtype: 'xcheckbox',
-                    boxLabel: _('infoblock_position_active'),
-                    name: 'active',
-                    id: config.id + '-active',
-                    checked: true,
-                }, {
                     xtype: 'infoblock-combo-templates',
                     id: config.id + 'templates',
                     fieldLabel: _('infoblock_position_templates'),
                     name: 'templates',
                     anchor: '99%'
                 }, {
-                    xtype: 'infoblock-combo-parents',
-                    id: config.id + 'parents',
-                    fieldLabel: _('infoblock_position_parents'),
-                    name: 'parents',
-                    anchor: '99%'
-                }, {
-                    xtype: 'infoblock-combo-classes',
-                    id: config.id + 'classes',
-                    fieldLabel: _('infoblock_position_classes'),
-                    name: 'classes',
-                    anchor: '99%'
+                    xtype: 'xcheckbox',
+                    boxLabel: _('infoblock_position_active'),
+                    name: 'active',
+                    id: config.id + '-active',
+                    checked: true,
                 }],
             }]
         },

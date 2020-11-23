@@ -1,5 +1,4 @@
 <?php
-
 /** @var modX $modx */
 /** @var array $scriptProperties */
 /** @var infoBlock $infoBlock */
@@ -24,32 +23,37 @@ $sortdir = $modx->getOption('sortbir', $scriptProperties, 'ASC');
 $limit = $modx->getOption('limit', $scriptProperties, 5);
 $outputSeparator = $modx->getOption('outputSeparator', $scriptProperties, "\n");
 
-$q = $modx->newQuery('infoBlockItem');
-$q->select($modx->getSelectColumns('infoBlockItem', 'infoBlockItem'));
-$q->where(['active' => 1, 'position_id' => $id]);
-$items = [];
-
-if ($q->prepare() && $q->stmt->execute()) {
-    while ($row = $q->stmt->fetch(PDO::FETCH_ASSOC)) {
-        $items[] = $row;
-    }
-}
-
 $q = $modx->newQuery('infoBlockPosition');
 $q->select($modx->getSelectColumns('infoBlockPosition', 'infoBlockPosition'));
 $q->where(['active' => 1, 'id' => $id]);
-$data = [];
+
+$output = '';
 
 if ($q->prepare() && $q->stmt->execute()) {
-    while ($outer = $q->stmt->fetch(PDO::FETCH_ASSOC)) {
+    $position = $q->stmt->fetch(PDO::FETCH_ASSOC);
+    if ($position) {
 
-        $tpl = $outer['chunk'];
-        $data['positions'][] = $outer;
-        foreach ($items as $item) {
-            $data['positions'][0]['items'][] = $item;
+        $template = $modx->resource->get('template');
+        $position['tpls'] = $modx->fromJSON($position['tpls']);
+
+        if (empty($position['tpls']) || in_array($template, $position['tpls'])) {
+
+            $position['items'] = [];
+            $q = $modx->newQuery('infoBlockItem');
+            $q->select($modx->getSelectColumns('infoBlockItem', 'infoBlockItem'));
+            $q->where(['active' => 1, 'position_id' => $id]);
+            if ($q->prepare() && $q->stmt->execute()) {
+                while ($row = $q->stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $position['items'][] = $row;
+                }
+            }
+            $tpl = $pdo->getArray('modChunk', $position['tpl']);
+            $output = $pdo->getChunk($tpl['name'], $position);
         }
     }
 }
 
-$tpl = $pdo->getArray('modChunk', $tpl);
-return $pdo->getChunk($tpl['name'], $data);
+echo '<pre>';
+print_r($position);
+echo '</pre>';
+return $output;
