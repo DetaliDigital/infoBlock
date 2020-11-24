@@ -103,19 +103,17 @@ Ext.extend(infoBlock.window.CreatePosition, MODx.Window, {
                     blankText: _('infoblock_position_err_alias'),
                     msgTarget: 'under'
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'trigger',
+                    onTriggerClick: function (e,btn) {
+                        btn.previousSibling.value = '';
+                    },
+                    triggerClass: 'x-field-trigger-clear',
                     fieldLabel: _('infoblock_position_limit'),
                     name: 'limit',
                     id: config.id + '-limit',
                     anchor: '99%',
                     allowBlank: true,
                 }, {
-                    xtype: 'infoblock-combo-templates',
-                    id: config.id + 'templates',
-                    fieldLabel: _('infoblock_position_templates'),
-                    name: 'templates',
-                    anchor: '99%'
-                },  {
                     xtype: 'xcheckbox',
                     boxLabel: _('infoblock_position_active'),
                     name: 'active',
@@ -168,14 +166,22 @@ Ext.extend(infoBlock.window.UpdatePosition, MODx.Window, {
                 layout: 'form',
                 defaults: {msgTarget: 'under'},
                 items: [{
-                    xtype: 'textfield',
+                    xtype: 'trigger',
+                    onTriggerClick: function (e,btn) {
+                        btn.previousSibling.value = '';
+                    },
+                    triggerClass: 'x-field-trigger-clear',
                     fieldLabel: _('infoblock_position_name'),
                     name: 'name',
                     id: config.id + '-name',
                     anchor: '99%',
                     allowBlank: false,
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'trigger',
+                    onTriggerClick: function (e,btn) {
+                        btn.previousSibling.value = '';
+                    },
+                    triggerClass: 'x-field-trigger-clear',
                     fieldLabel: _('infoblock_position_title'),
                     name: 'title',
                     id: config.id + '-title',
@@ -222,19 +228,17 @@ Ext.extend(infoBlock.window.UpdatePosition, MODx.Window, {
                     blankText: _('infoblock_position_err_alias'),
                     msgTarget: 'under'
                 }, {
-                    xtype: 'textfield',
+                    xtype: 'trigger',
+                    onTriggerClick: function (e,btn) {
+                        btn.previousSibling.value = '';
+                    },
+                    triggerClass: 'x-field-trigger-clear',
                     fieldLabel: _('infoblock_position_limit'),
                     name: 'limit',
                     id: config.id + '-limit',
                     anchor: '99%',
                     allowBlank: true,
                     msgTarget: 'under'
-                }, {
-                    xtype: 'infoblock-combo-templates',
-                    id: config.id + 'templates',
-                    fieldLabel: _('infoblock_position_templates'),
-                    name: 'templates',
-                    anchor: '99%'
                 }, {
                     xtype: 'xcheckbox',
                     boxLabel: _('infoblock_position_active'),

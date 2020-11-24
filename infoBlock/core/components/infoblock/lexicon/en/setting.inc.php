@@ -2,5 +2,5 @@
 
 $_lang['area_infoblock_main'] = 'Main';
 
-$_lang['setting_infoblock_some_setting'] = 'Some setting';
-$_lang['setting_infoblock_some_setting_desc'] = 'This is description for some setting';
+$_lang['setting_infoblock_allowed_chunks_category'] = 'Allowed categories for fetching chunks';
+$_lang['setting_infoblock_allowed_chunks_category_desc'] = 'Specify the category ID that you can use in the infoBlock package';

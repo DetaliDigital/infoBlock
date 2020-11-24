@@ -33,27 +33,20 @@ if ($q->prepare() && $q->stmt->execute()) {
     $position = $q->stmt->fetch(PDO::FETCH_ASSOC);
     if ($position) {
 
-        $template = $modx->resource->get('template');
-        $position['tpls'] = $modx->fromJSON($position['tpls']);
+        $position['items'] = array();
+        $q = $modx->newQuery('infoBlockItem');
 
-        if (empty($position['tpls']) || in_array($template, $position['tpls'])) {
-
-            $position['items'] = [];
-            $q = $modx->newQuery('infoBlockItem');
-            $q->select($modx->getSelectColumns('infoBlockItem', 'infoBlockItem'));
-            $q->where(['active' => 1, 'position_id' => $id]);
-            if ($q->prepare() && $q->stmt->execute()) {
-                while ($row = $q->stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $position['items'][] = $row;
-                }
+        $q->select($modx->getSelectColumns('infoBlockItem', 'infoBlockItem'));
+        $q->where(['active' => 1, 'position_id' => $id]);
+        if ($q->prepare() && $q->stmt->execute()) {
+            while ($row = $q->stmt->fetch(PDO::FETCH_ASSOC)) {
+                $position['items'][] = $row;
             }
-            $tpl = $pdo->getArray('modChunk', $position['tpl']);
-            $output = $pdo->getChunk($tpl['name'], $position);
         }
+        $tpl = $pdo->getArray('modChunk', $position['tpl']);
+        $output = $pdo->getChunk($tpl['name'], $position);
+
     }
 }
 
-echo '<pre>';
-print_r($position);
-echo '</pre>';
 return $output;

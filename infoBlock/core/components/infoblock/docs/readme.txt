@@ -1,7 +1,7 @@
 --------------------
 infoBlock
 --------------------
-Author: John Doe <john@doe.com>
+Author: DSMC <shchavelev@mail.ru>
 --------------------
 
-A basic Extra for MODx Revolution.
+Package for CMS MODX Revo for managing: sliders, carousels, text blocks and other widgets

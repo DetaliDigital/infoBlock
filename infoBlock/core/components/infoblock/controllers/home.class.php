@@ -55,6 +55,7 @@ class infoBlockHomeManagerController extends modExtraManagerController
         $this->addCss($this->infoBlock->config['cssUrl'] . 'mgr/main.css');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/infoblock.js');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/misc/utils.js');
+        $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/misc/field.js');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/misc/combo.js');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/widgets/items.grid.js');
         $this->addJavascript($this->infoBlock->config['jsUrl'] . 'mgr/widgets/items.windows.js');

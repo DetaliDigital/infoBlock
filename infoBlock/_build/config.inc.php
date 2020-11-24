@@ -11,8 +11,8 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'infoBlock',
     'name_lower' => 'infoblock',
-    'version' => '0.5.7',
-    'release' => 'pl',
+    'version' => '0.5.9',
+    'release' => 'beta',
     // Install package to site right after build
     'install' => true,
     // Which elements should be updated on package upgrade
