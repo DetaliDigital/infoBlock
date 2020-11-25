@@ -11,7 +11,7 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'infoBlock',
     'name_lower' => 'infoblock',
-    'version' => '0.5.10',
+    'version' => '0.5.12',
     'release' => 'beta',
     // Install package to site right after build
     'install' => true,
