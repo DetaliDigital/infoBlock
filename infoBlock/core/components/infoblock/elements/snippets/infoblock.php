@@ -43,7 +43,7 @@ if ($q->prepare() && $q->stmt->execute()) {
                 $position['items'][] = $row;
             }
         }
-        $tpl = $pdo->getArray('modChunk', $position['tpl']);
+        $tpl = $pdo->getArray('modChunk', $position['chunk']);
         $output = $pdo->getChunk($tpl['name'], $position);
 
     }
